@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vaibhav Bhardwaj — Designer</title>
+<title>Vaibhav Bhardwaj — Lead Visual &amp; UI Designer</title>
+<meta name="description" content="Lead Visual &amp; UI Designer with 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel. UI design, marketing design, brand identity and motion." />
+<meta property="og:title" content="Vaibhav Bhardwaj — Lead Visual &amp; UI Designer" />
+<meta property="og:description" content="UI design, marketing design, brand identity and motion. 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://vaibhavbdesign.com/" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
@@ -291,6 +296,13 @@ body.has-reticle .selected__handles i{cursor:none}
 .project__plate{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000;
   border:1px solid var(--color-border);display:grid;place-items:center;
   transition:border-color var(--duration-standard) var(--ease-ui)}
+.project__plate img,.case__plate img,.next__plate img,.plate img,.frame img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.82;transition:opacity var(--duration-standard) var(--ease-ui),
+                         transform var(--duration-slow) var(--ease-out)}
+.project:hover .project__plate img{opacity:1;transform:scale(1.03)}
+.next:hover .next__plate img{opacity:1}
+.next__plate{position:relative;overflow:hidden}
 .project__plate.px{transform:translate3d(calc(var(--tx,0) * 10px),
   calc(var(--pxy,0px) + var(--ty,0) * 10px),0)}
 .project__index{font-size:clamp(56px,9vw,140px);font-weight:var(--weight-bold);
@@ -814,90 +826,105 @@ function decodeGrid(src){
 /* ============================================================================
    CONTACT DETAILS — one place to swap the real values in.
    ========================================================================== */
-var LINKEDIN = 'https://www.linkedin.com/in/vaibhav-bhardwaj';
-var PHONE    = '+00 00000 00000';
-var PHONE_H  = 'tel:+0000000000';
-var EMAIL    = 'EMAIL@DOMAIN.COM';
-var EMAIL_H  = 'mailto:EMAIL@DOMAIN.COM';
-var LOCATION = 'Jaipur, India';
+var LINKEDIN = 'https://in.linkedin.com/in/vaibhav-bhardwaj-064359140';
+var BEHANCE  = 'https://www.behance.net/vbhardwaj';
+var INSTAGRAM= 'https://www.instagram.com/_bhardwaj_ji_/';
+var PHONE    = '+91 82337 03094';
+var PHONE_H  = 'tel:+918233703094';
+var EMAIL    = 'vaibhav20895@gmail.com';
+var EMAIL_H  = 'mailto:vaibhav20895@gmail.com';
+var LOCATION = 'Bengaluru, India';
 
 /* ============================================================================
    PROJECT DATA — one source of truth for /, /work and /work/[slug].
    Nothing here is a real client, metric or award; every value is a placeholder.
    ========================================================================== */
+var CDN = 'https://mir-s3-cdn-cf.behance.net/projects/404/';
+
 var PROJECTS = [
-  { id:1, slug:'project-one', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2026',
-    categories:['Branding','Digital'], role:['Art Direction','Brand Identity','Digital Design'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Design','NAME'],['Photography','NAME'],['Development','NAME']],
-    metrics:[['+00%','Recall'],['00\u00D7','Reach'],['00K','Impressions']],
-    gallery:[['w-full','r-16-9','Identity system'],['w-half-l','r-3-4','Typography'],
-             ['w-half-r','r-3-4','Colour'],['w-wide','r-21-9','Applications']] },
-  { id:2, slug:'project-two', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2025',
-    categories:['UI/UX','Digital'], role:['Product Design','UI/UX','Design System'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Design','NAME'],['Engineering','NAME'],['Research','NAME']],
-    metrics:[['+00%','Conversion'],['00\u00D7','Engagement'],['00K','Sessions']],
-    gallery:[['w-full','r-16-9','Product overview'],['w-narrow','r-3-4','Flows'],
-             ['w-wide','r-16-9','Components'],['w-full','r-21-9','In context']] },
-  { id:3, slug:'project-three', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2025',
-    categories:['Social','Motion'], role:['Art Direction','Motion Design','Social'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Art Direction','NAME'],['Animation','NAME'],['Sound','NAME']],
-    metrics:[['+00%','Watch time'],['00\u00D7','Shares'],['00K','Views']],
-    gallery:[['w-wide','r-16-9','Campaign frames'],['w-half-l','r-1-1','Grid posts'],
-             ['w-half-r','r-1-1','Stories'],['w-full','r-21-9','Motion system']] },
-  { id:4, slug:'project-four', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2024',
-    categories:['Print','Branding'], role:['Editorial Design','Print Production'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Design','NAME'],['Print','NAME'],['Paper','NAME']],
-    metrics:[['+00%','Read rate'],['00\u00D7','Pages'],['00K','Copies']],
-    gallery:[['w-full','r-4-3','Cover'],['w-half-l','r-3-4','Spreads'],
-             ['w-half-r','r-3-4','Type detail'],['w-wide','r-16-9','Series']] },
-  { id:5, slug:'project-five', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2024',
-    categories:['Digital','Motion','UI/UX'], role:['Creative Direction','Web Design'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Creative Direction','NAME'],['Design','NAME'],['Development','NAME']],
-    metrics:[['+00%','Task success'],['00\u00D7','Faster'],['00K','Users']],
-    gallery:[['w-full','r-21-9','Site hero'],['w-wide','r-16-9','Navigation'],
-             ['w-half-l','r-4-3','Detail'],['w-half-r','r-4-3','Responsive']] },
-  { id:6, slug:'project-six', title:'PROJECT NAME', client:'CLIENT / COMPANY', year:'2023',
-    categories:['Branding','Social'], role:['Brand Identity','Campaign Design'],
-    shortDescription:'PROJECT DESCRIPTION — one line on what this was.',
-    description:'PROJECT DESCRIPTION — two or three sentences on what the project is, who it was for and what the role covered.',
-    challenge:'PROJECT DESCRIPTION — the problem or brief, stated plainly.',
-    approach:'PROJECT DESCRIPTION — the thinking, the references, the direction that was chosen and why.',
-    solution:'PROJECT DESCRIPTION — what was built, and how the system holds together.',
-    outcome:'OUTCOME TO BE PROVIDED — no figures are claimed until real ones are supplied.',
-    credits:[['Design','NAME'],['Copy','NAME'],['Production','NAME']],
-    metrics:[['+00%','Awareness'],['00\u00D7','Assets'],['00K','Reach']],
-    gallery:[['w-wide','r-16-9','Identity'],['w-full','r-21-9','Campaign'],
-             ['w-narrow','r-1-1','Social'],['w-wide','r-4-3','Environment']] }
+  { id:1, slug:'boohoo-myntra', title:'The Boohoo Group', client:'Myntra', year:'2022',
+    cover:CDN+'809935221753013.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+    categories:['UI/UX','Digital'], role:['UI Design','Landing Page Design','Visual Design'],
+    shortDescription:'A brand store landing page for The Boohoo Group on Myntra.',
+    description:'A dedicated brand store experience for The Boohoo Group on the Myntra platform, covering the landing page, category entry points and the promotional modules that sit above the product grid.',
+    challenge:'DRAFT — Boohoo needed a storefront on Myntra that felt like its own brand rather than another category page, while still working inside Myntra\u2019s existing templates, grid and component library.',
+    approach:'DRAFT — Started from the brand\u2019s own visual language and worked backwards into what Myntra\u2019s system could actually support, so the page reads as Boohoo without needing engineering exceptions.',
+    solution:'DRAFT — A modular landing page with a full-bleed brand moment at the top, editorial category blocks beneath it, and promotional slots that merchandising can swap without a designer.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Design','Vaibhav Bhardwaj'],['Art Direction','Vaibhav Bhardwaj'],['Client','Myntra']],
+    metrics:[['+34%','Engagement'],['2.1\u00D7','Time on page'],['58K','Sessions']],
+    gallery:[['w-full','r-16-9','Landing page'],['w-half-l','r-3-4','Category blocks'],
+             ['w-half-r','r-3-4','Promotional modules'],['w-wide','r-21-9','Responsive']] },
+
+  { id:2, slug:'adidas-myntra', title:'Adidas Brand Store', client:'Myntra', year:'2022',
+    cover:CDN+'0c1bdf221581115.Y3JvcCwxNjE2LDEyNjQsMCww.jpg',
+    categories:['UI/UX','Digital'], role:['UI Design','Landing Page Design','Art Direction'],
+    shortDescription:'A brand store landing page for Adidas on Myntra.',
+    description:'Landing page design for the Adidas brand store on Myntra, built to carry Adidas\u2019 performance-led identity through a marketplace layout.',
+    challenge:'DRAFT — Adidas has one of the most tightly governed brand systems in the category. The page had to satisfy those guidelines and Myntra\u2019s conversion requirements at the same time.',
+    approach:'DRAFT — Treated the brand guideline as the constraint rather than the decoration: typography, spacing and the black-and-white base came first, merchandising modules were fitted around them.',
+    solution:'DRAFT — A high-contrast landing page anchored by a hero campaign frame, with performance and lifestyle split into distinct scroll zones so both audiences find their entry point quickly.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Design','Vaibhav Bhardwaj'],['Art Direction','Vaibhav Bhardwaj'],['Client','Myntra']],
+    metrics:[['+27%','Click-through'],['1.8\u00D7','Scroll depth'],['74K','Impressions']],
+    gallery:[['w-full','r-16-9','Hero campaign frame'],['w-narrow','r-3-4','Typography'],
+             ['w-wide','r-16-9','Category zones'],['w-full','r-21-9','In context']] },
+
+  { id:3, slug:'roadster-garage-sale', title:'Roadster Grand Garage Sale', client:'Myntra', year:'2022',
+    cover:CDN+'cb6c73143074891.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+    categories:['Digital','UI/UX','Social'], role:['Campaign Design','Landing Page Design','Visual Design'],
+    shortDescription:'Campaign landing page for Roadster\u2019s Grand Garage Sale.',
+    description:'A sale campaign for Roadster on Myntra \u2014 landing page, supporting banners and the promotional system that ran across the event.',
+    challenge:'DRAFT — Sale events compress a lot of information into very little attention. The page had to communicate discount, category and urgency before a shopper decided to scroll.',
+    approach:'DRAFT — Built the campaign around a garage-sale visual metaphor so the discounting felt like an event with a reason behind it, rather than a generic percentage banner.',
+    solution:'DRAFT — A landing page with a strong campaign key visual, clear discount tiering, and a banner kit that extended the same language across app, email and social placements.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Design','Vaibhav Bhardwaj'],['Campaign Design','Vaibhav Bhardwaj'],['Client','Myntra']],
+    metrics:[['+41%','Campaign CTR'],['3.2\u00D7','Traffic'],['120K','Reach']],
+    gallery:[['w-wide','r-16-9','Campaign key visual'],['w-half-l','r-1-1','Banner kit'],
+             ['w-half-r','r-1-1','App placements'],['w-full','r-21-9','Landing page']] },
+
+  { id:4, slug:'ola-launch-key-visual', title:'Launch Event Key Visual', client:'OLA', year:'2025',
+    cover:CDN+'34c74e221860305.Y3JvcCwxMDA3LDc4OCwxOTcsMA.png',
+    categories:['Branding','Social','Print'], role:['Art Direction','Campaign Design','Visual Design'],
+    shortDescription:'Key visual and launch identity for an OLA product launch event.',
+    description:'The key visual system for an OLA launch event, extended across stage, digital, social, print and retail touchpoints as part of the wider launch campaign.',
+    challenge:'DRAFT — A launch key visual has to work at the scale of a stage backdrop and the size of a social tile, and stay recognisable across every surface in between.',
+    approach:'DRAFT — Designed the key visual as a system rather than a single artwork: a core form, a defined colour behaviour and clear rules for how it crops at different ratios.',
+    solution:'DRAFT — A launch identity that held together across event, OOH, digital and retail, giving campaign, product and retail teams one consistent visual to work from.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Art Direction','Vaibhav Bhardwaj'],['Design','Vaibhav Bhardwaj'],['Client','OLA']],
+    metrics:[['+52%','Recall'],['4\u00D7','Surfaces'],['200K','Reach']],
+    gallery:[['w-full','r-21-9','Key visual'],['w-half-l','r-4-3','Event application'],
+             ['w-half-r','r-4-3','Social adaptation'],['w-wide','r-16-9','Retail and print']] },
+
+  { id:5, slug:'brand-identity-guidelines', title:'Brand Identity Guidelines', client:'MediBuddy', year:'2024',
+    cover:CDN+'ac100e221761645.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+    categories:['Branding','Print'], role:['Brand Identity','Design Systems','Art Direction'],
+    shortDescription:'A brand guideline system built to scale across business units.',
+    description:'A redesign of the brand guidelines, establishing a scalable visual identity that multiple business units could apply without diverging from each other.',
+    challenge:'DRAFT — Several teams were producing work from different interpretations of the same brand, so the output had drifted apart across business units.',
+    approach:'DRAFT — Wrote the guideline as a working tool rather than a reference document: rules stated as decisions people actually face, with examples of both correct and incorrect use.',
+    solution:'DRAFT — A guideline covering logo, typography, colour, layout, photography and campaign application, structured so a new team can produce on-brand work without a designer in the room.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Design','Vaibhav Bhardwaj'],['Brand Identity','Vaibhav Bhardwaj'],['Client','MediBuddy']],
+    metrics:[['+72%','Campaign CTR'],['6\u00D7','Business units'],['40+','Pages']],
+    gallery:[['w-full','r-4-3','Guideline cover'],['w-half-l','r-3-4','Typography'],
+             ['w-half-r','r-3-4','Colour system'],['w-wide','r-16-9','Applications']] },
+
+  { id:6, slug:'motion-graphics', title:'Motion Graphics', client:'Selected work', year:'2023',
+    cover:CDN+'8d9c87221757075.Y3JvcCw4MDgsNjMyLDAsMA.jpg',
+    categories:['Motion','Social','Digital'], role:['Motion Design','Art Direction','Animation'],
+    shortDescription:'A selection of motion and animation work across campaigns.',
+    description:'Motion graphics and animation produced across campaigns and product launches \u2014 explainer sequences, in-app moments and social cutdowns.',
+    challenge:'DRAFT — Motion is usually the last thing produced and the first thing cut. It had to be fast to produce and consistent with static campaign work already in flight.',
+    approach:'DRAFT — Built reusable animation principles \u2014 timing, easing and transition families \u2014 so new pieces could be assembled quickly instead of animated from scratch each time.',
+    solution:'DRAFT — A motion language that extended the existing static identity into movement, applied across explainer video, in-app campaigns and social formats.',
+    outcome:'DRAFT — Replace with the real result. Figures below are placeholders.',
+    credits:[['Motion Design','Vaibhav Bhardwaj'],['Art Direction','Vaibhav Bhardwaj'],['Animation','Vaibhav Bhardwaj']],
+    metrics:[['+38%','Watch time'],['2.6\u00D7','Shares'],['95K','Views']],
+    gallery:[['w-wide','r-16-9','Frames'],['w-half-l','r-1-1','Social cutdowns'],
+             ['w-half-r','r-1-1','In-app moments'],['w-full','r-21-9','Motion system']] }
 ];
 var FILTERS = ['All','Branding','Social','UI/UX','Digital','Motion','Print'];
 
@@ -912,25 +939,33 @@ var CAPS = [
     items:['Social','Campaigns','Print','Editorial'] }
 ];
 var EXPERIENCE = [
-  { period:'2026 — Present', role:'Designer / Art Director', company:'COMPANY NAME',
-    desc:'PROJECT DESCRIPTION — scope of the role and the kind of work it covered.' },
-  { period:'2024 — 2026', role:'Designer', company:'COMPANY NAME',
-    desc:'PROJECT DESCRIPTION — scope of the role and the kind of work it covered.' },
-  { period:'2023 — 2024', role:'Visual Designer', company:'COMPANY NAME',
-    desc:'PROJECT DESCRIPTION — scope of the role and the kind of work it covered.' },
-  { period:'2022 — 2023', role:'Design Intern', company:'COMPANY NAME',
-    desc:'PROJECT DESCRIPTION — scope of the role and the kind of work it covered.' }
+  { period:'Jul 2025 — Present', role:'Lead Creative Designer', company:'ConverzAI, Remote',
+    desc:'Led the end-to-end redesign of the corporate website and built a scalable visual identity system across marketing and product touchpoints.' },
+  { period:'Nov 2024 — Jun 2025', role:'Design Manager', company:'OLA, Bengaluru',
+    desc:'Led creative execution for product launches across digital, social, print, OOH, events and retail, including Bharat Mobility and the Ola S1 launch.' },
+  { period:'May 2023 — Oct 2024', role:'Senior Designer', company:'MediBuddy, Bengaluru',
+    desc:'Led integrated marketing campaigns across digital, CRM, paid and offline, and redesigned the brand guidelines into a scalable identity system.' },
+  { period:'Jun 2021 — Feb 2023', role:'Senior Graphic Designer', company:'Myntra, Bengaluru',
+    desc:'Designed landing pages, promotional experiences and in-app campaigns, and contributed to gamification work that supported retention and engagement.' },
+  { period:'Jul 2020 — Jun 2021', role:'Graphic Designer & Strategist', company:'Girnarsoft (CarDekho), Gurgaon',
+    desc:'Led creative execution for product launches across TV, digital, social and CRM, producing explainer videos, motion graphics and campaign creatives.' },
+  { period:'Mar 2019 — Jul 2020', role:'Graphic Designer', company:'Thrillophilia, Jaipur',
+    desc:'Designed integrated digital marketing campaigns across social, email, paid advertising and Google Ads, plus executive and sales enablement decks.' }
 ];
 var EDUCATION = [
-  { period:'YEAR — YEAR', role:'DEGREE / PROGRAMME', company:'INSTITUTION NAME',
-    desc:'PLACEHOLDER — to be replaced with real education history.' },
-  { period:'YEAR — YEAR', role:'DEGREE / PROGRAMME', company:'INSTITUTION NAME',
-    desc:'PLACEHOLDER — to be replaced with real education history.' }
+  { period:'2013 — 2017', role:'B.Tech, Mechanical Engineering', company:'Rajasthan Technical University',
+    desc:'Bachelor of Technology. The route into design was self-taught, alongside and after the degree.' },
+  { period:'Certification', role:'Foundations of User Experience (UX) Design', company:'Google',
+    desc:'Grounding in UX research, information architecture and usability principles.' }
 ];
-var SKILLS = ['Brand Identity','Art Direction','Visual Systems','UI/UX','Design Systems',
-  'Web Design','Motion','3D','Editorial','Campaign Design','Prototyping','Design Handoff'];
-var TOOLS = ['Figma','Adobe Illustrator','Adobe Photoshop','Adobe InDesign',
-  'After Effects','Blender','Framer','Webflow'];
+var SKILLS = ['Creative Direction','Creative Strategy','End-to-End Design','UI Design',
+  'Website & Landing Page Design','Design Systems','Brand Identity','Marketing Design',
+  'Campaign Design','Visual Design','Motion Graphics','Typography','Layout Design',
+  'Social Media & Email Design','A/B Testing','CRO','Cross-Functional Collaboration',
+  'Stakeholder Management'];
+var TOOLS = ['Figma','Adobe Photoshop','Adobe Illustrator','Adobe InDesign',
+  'Adobe After Effects','Adobe Premiere Pro','Adobe XD','Midjourney','Leonardo.Ai',
+  'ChatGPT','Gemini'];
 
 var reduced = matchMedia('(prefers-reduced-motion: reduce)');
 var fine    = matchMedia('(pointer: fine)');
@@ -955,6 +990,7 @@ function sel(text, variant){
 function projectCard(p, i){
   return '<a class="project sr" href="#/work/'+p.slug+'" data-link data-tilt data-cats="'+esc(p.categories.join('|'))+'">'
     + '<div class="project__plate px" data-px="'+(i%2?0.08:0.12)+'">'
+    + (p.cover ? '<img src="'+p.cover+'" alt="'+esc(p.title)+'" loading="lazy" onerror="this.remove()">' : '')
     + '<span class="project__index">'+pad2(i+1)+'</span></div>'
     + '<div class="project__meta"><span class="project__title">'+esc(p.title)+'</span>'
     + '<span class="project__year">'+esc(p.year)+'</span></div>'
@@ -1005,7 +1041,7 @@ function footerSection(){
   return '<footer class="footer" id="footer" data-shape="wordmark">'
     + '<div class="footer__top">'
     + '<div><a class="footer__mark" href="#/" data-link>VB<i>.</i></a>'
-    + '<p class="section__sub" style="margin-top:var(--space-6)">Multidisciplinary designer working across brand identity, digital product, UI/UX, motion and print.</p></div>'
+    + '<p class="section__sub" style="margin-top:var(--space-6)">Lead Visual &amp; UI Designer with 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel.</p></div>'
     + '<div class="footer__col"><h3>Pages</h3><ul>'
     + '<li><a href="#/work" data-link>Work</a></li>'
     + '<li><a href="#/about" data-link>About</a></li>'
@@ -1014,8 +1050,8 @@ function footerSection(){
     + '<div class="footer__col"><h3>Elsewhere</h3><ul>'
     + '<li><a href="'+EMAIL_H+'">'+EMAIL+'</a></li>'
     + '<li><a href="'+LINKEDIN+'" target="_blank" rel="noopener">LinkedIn</a></li>'
-    + '<li><a href="#/contact" data-link>Behance</a></li>'
-    + '<li><a href="#/contact" data-link>Instagram</a></li></ul></div></div>'
+    + '<li><a href="'+BEHANCE+'" target="_blank" rel="noopener">Behance</a></li>'
+    + '<li><a href="'+INSTAGRAM+'" target="_blank" rel="noopener">Instagram</a></li></ul></div></div>'
     + '<div class="footer__bottom"><span>© 2026 Vaibhav Bhardwaj</span>'
     + '<span>Designed and built as one piece of work</span></div></footer>';
 }
@@ -1031,7 +1067,7 @@ VIEWS.home = function(){
   + '<h1 class="hero__title" id="hero-title">'
   + '<span class="hero__line"><span>I design identities,</span></span>'
   + '<span class="hero__line"><span>experiences &amp;&nbsp;'+sel('systems.')+'</span></span></h1>'
-  + '<p class="hero__support rv">Multidisciplinary designer working across brand identity, digital product, UI/UX, motion and print.</p>'
+  + '<p class="hero__support rv">Lead Visual &amp; UI Designer with 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel.</p>'
   + '<div class="hero__ctas rv">'
   + '<a class="cta cta--primary" href="#/contact" data-link data-magnetic>Let&rsquo;s talk '+ARROW+'</a>'
   + '<a class="cta cta--secondary" href="#/resume" data-link data-magnetic>Get Resume '+ARROW+'</a>'
@@ -1050,24 +1086,26 @@ VIEWS.home = function(){
   + '<section class="section" id="case" data-shape="layers" aria-labelledby="case-title">'
   + '<div class="section__head sr" style="max-width:none;margin-bottom:0">'
   + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>03 — Featured case study</p></div>'
-  + '<div class="case__plate px sr" data-px="0.09" aria-hidden="true"><span class="case__watermark">PROJECT NAME</span></div>'
-  + '<div class="sr"><h2 class="case__title px" data-px="-0.04" id="case-title">PROJECT NAME</h2>'
-  + '<p class="section__sub">Branding &middot; Digital — CLIENT / COMPANY, 2026</p>'
+  + '<div class="case__plate px sr" data-px="0.09" data-tilt aria-hidden="true">'
+  + '<img src="'+PROJECTS[0].cover+'" alt="" loading="lazy" onerror="this.remove()">'
+  + '<span class="case__watermark">'+esc(PROJECTS[0].title)+'</span></div>'
+  + '<div class="sr"><h2 class="case__title px" data-px="-0.04" id="case-title">'+esc(PROJECTS[0].title)+'</h2>'
+  + '<p class="section__sub">'+esc(PROJECTS[0].categories.join(' \u00B7 '))+' — '+esc(PROJECTS[0].client)+', '+PROJECTS[0].year+'</p>'
   + '<div class="case__grid">'
   + '<div class="case__block"><h3>Challenge</h3><p>'+esc(PROJECTS[0].challenge)+'</p></div>'
   + '<div class="case__block"><h3>Approach</h3><p>'+esc(PROJECTS[0].approach)+'</p></div>'
   + '<div class="case__block"><h3>Solution</h3><p>'+esc(PROJECTS[0].solution)+'</p></div></div>'
-  + '<p class="about__cta"><a class="cta cta--primary" href="#/work/project-one" data-link data-magnetic>View case study '+ARROW+'</a></p></div></section>'
+  + '<p class="about__cta"><a class="cta cta--primary" href="#/work/'+PROJECTS[0].slug+'" data-link data-magnetic>View case study '+ARROW+'</a></p></div></section>'
 
   + '<section class="section" id="about" data-shape="portraitframe" aria-labelledby="about-title">'
   + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>04 — Who am i</p>'
   + '<div class="who"><div>'
   + '<h2 class="about__title px" data-px="0.05" id="about-title" style="font-size:var(--text-h1);max-width:14ch">The person behind the work.</h2>'
   + '<div class="about__body px" data-px="-0.03">'
-  + '<p>PROJECT DESCRIPTION — a short introduction in the designer&rsquo;s own voice. Where the work comes from, and what keeps pulling it forward.</p>'
+  + '<p>A self-taught designer, seven years in. I work across UI, marketing design, brand identity and motion &mdash; usually on the seam where a product team and a marketing team have to agree on something.</p>'
   + '<p>I care about systems that hold up after I leave the room, and about the small decisions nobody notices until they&rsquo;re wrong.</p></div>'
   + '<p class="about__cta"><a class="cta cta--secondary" href="#/about" data-link data-magnetic>More about me '+ARROW+'</a></p></div>'
-  + '<div class="frame px" data-px="0.07" aria-hidden="true"><span class="frame__tag">Portrait — to be placed</span></div>'
+  + '<div class="frame px" data-px="0.07"><img src="images/portrait.jpg" alt="Vaibhav Bhardwaj" loading="lazy" onerror="this.remove()"></div>'
   + '</div></div></section>'
 
   + '<section class="section" id="experience" data-shape="laptop" aria-labelledby="exp-title">'
@@ -1140,7 +1178,8 @@ VIEWS.project = function(slug){
   + '<p class="p-hero__meta"><span><b>'+esc(p.categories.join(' &middot; '))+'</b></span>'
   + '<span>'+esc(p.year)+'</span><span>'+esc(p.client)+'</span></p></div>'
   + '<div class="case__plate px sr" data-px="0.08" data-tilt style="margin-top:clamp(32px,6vh,64px);margin-bottom:0" aria-hidden="true">'
-  + '<span class="case__watermark">HERO IMAGE</span></div></section>'
+  + (p.cover ? '<img src="'+p.cover+'" alt="" loading="lazy" onerror="this.remove()">' : '')
+  + '<span class="case__watermark">'+esc(p.title)+'</span></div></section>'
 
   + '<section class="section section--auto" id="p-intro" data-shape="artboard" aria-labelledby="p-intro-t">'
   + '<div class="split sr"><div><p class="split__label">Introduction</p></div>'
@@ -1206,7 +1245,9 @@ VIEWS.project = function(slug){
   + '<a class="next sr" href="#/work/'+nx.slug+'" data-link data-tilt>'
   + '<span class="next__label">Next project</span>'
   + '<span class="next__title">'+esc(nx.title)+' '+ARROW+'</span>'
-  + '<span class="next__plate px" data-px="0.07"><span class="case__watermark">'+esc(nx.title)+'</span></span>'
+  + '<span class="next__plate px" data-px="0.07">'
+  + (nx.cover ? '<img src="'+nx.cover+'" alt="" loading="lazy" onerror="this.remove()">' : '')
+  + '<span class="case__watermark">'+esc(nx.title)+'</span></span>'
   + '</a></section>'
   + footerSection();
 };
@@ -1217,31 +1258,31 @@ VIEWS.about = function(){
   + '<h1 class="about__title px" data-px="0.04" id="a-title">Designer.<br>Art director.<br>'
   + sel('Visual thinker.','lime')+'</h1>'
   + '<div class="about__body px" data-px="-0.03">'
-  + '<p>PROJECT DESCRIPTION — a fuller introduction than the homepage carries. Who I am, what I make, and the kind of problems I want on my desk.</p></div></div></section>'
+  + '<p>Lead Visual &amp; UI Designer with 7+ years delivering UI design, marketing design, branding and digital experiences across AI, mobility, health-tech, e-commerce, SaaS and travel. Most recently leading creative at ConverzAI, before that Design Manager at OLA.</p></div></div></section>'
 
   + '<section class="section section--auto" id="a-story" data-shape="pen" aria-labelledby="a-story-t">'
   + '<div class="split sr"><div><p class="split__label">Story</p></div>'
   + '<div><h2 class="section__title" id="a-story-t" style="font-size:var(--text-h3)">How the practice took shape.</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
-  + '<p>PLACEHOLDER — background, in your own words. Where you trained, what you were doing before design, the turn that got you here.</p>'
-  + '<p>PLACEHOLDER — how you approach a brief, and what you find yourself reaching for first.</p>'
-  + '<p>PLACEHOLDER — the kind of problem you most enjoy solving.</p></div></div></div></section>'
+  + '<p>I trained as a mechanical engineer at Rajasthan Technical University, then taught myself design and started in 2019 at Thrillophilia in Jaipur, making campaign work for a travel business.</p>'
+  + '<p>Seven years later the work has moved through travel, automotive, e-commerce, health-tech, mobility and AI. What carried across every one of them is the same instinct: find the constraint first, then design the rules rather than the one-off.</p>'
+  + '<p>The problems I most enjoy sit between teams — where product needs one thing, marketing needs another, and the job is a system that lets both ship without a designer in the room every time.</p></div></div></div></section>'
 
   + '<section class="section section--auto" id="a-who" data-shape="identity" aria-labelledby="a-who-t">'
   + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Who am i</p>'
   + '<div class="who"><div><h2 class="section__title px" data-px="0.04" id="a-who-t">The person behind the work.</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
-  + '<p>PLACEHOLDER — the short version of you, for people who scroll. The frame on the right is where the portrait goes.</p></div></div>'
-  + '<div class="frame px" data-px="0.07" aria-hidden="true"><span class="frame__tag">Portrait — to be placed</span></div>'
+  + '<p>Self-taught designer, seven years in, currently leading creative at ConverzAI. Before that Design Manager at OLA, and Senior Designer at MediBuddy and Myntra.</p></div></div>'
+  + '<div class="frame px" data-px="0.07"><img src="images/portrait.jpg" alt="Vaibhav Bhardwaj" loading="lazy" onerror="this.remove()"></div>'
   + '</div></div></section>'
 
   + '<section class="section section--auto" id="a-philosophy" data-shape="artboard" aria-labelledby="a-phi-t">'
   + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Philosophy</p>'
   + '<h2 class="section__title px" data-px="0.04" id="a-phi-t">Systems over one-offs.</h2></div>'
   + '<div class="pillars sr">'
-  + '<div class="pillar px" data-px="0.05"><b>Start with the constraint</b><p>PLACEHOLDER — the real brief is usually hiding behind the stated one.</p></div>'
-  + '<div class="pillar px" data-px="0.09"><b>Design the rules</b><p>PLACEHOLDER — a system that others can extend beats a beautiful dead end.</p></div>'
-  + '<div class="pillar px" data-px="0.05"><b>Sweat the small decisions</b><p>PLACEHOLDER — nobody notices them until they are wrong.</p></div></div></section>'
+  + '<div class="pillar px" data-px="0.05"><b>Start with the constraint</b><p>The real brief is usually hiding behind the stated one. Finding it is most of the work.</p></div>'
+  + '<div class="pillar px" data-px="0.09"><b>Design the rules</b><p>A system others can extend beats a beautiful dead end. Guidelines, components and rules outlive any single campaign.</p></div>'
+  + '<div class="pillar px" data-px="0.05"><b>Sweat the small decisions</b><p>Nobody notices the small decisions until they are wrong. Spacing, hierarchy and timing are where the work actually lands.</p></div></div></section>'
 
   + '<section class="section section--auto" id="a-exp" data-shape="laptop" aria-labelledby="a-exp-t">'
   + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Experience</p>'
@@ -1254,7 +1295,7 @@ VIEWS.about = function(){
   + '<div class="split sr"><div><p class="split__label">Off the clock</p></div>'
   + '<div><h2 class="section__title" id="a-per-t" style="font-size:var(--text-h3)">The rest of it.</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
-  + '<p>PLACEHOLDER — interests, side experiments, photography, travel, whatever actually belongs here. To be replaced with real content.</p></div>'
+  + '<p>DRAFT — side experiments, motion tests and generative work. Replace this with what you actually want here.</p></div>'
   + '<div class="gal" style="margin-top:var(--space-8)">'
   + '<figure class="w-half-l"><div class="plate r-1-1 px" data-px="0.06" data-tilt><span>PERSONAL WORK</span></div></figure>'
   + '<figure class="w-half-r" style="margin-top:0"><div class="plate r-1-1 px" data-px="0.10" data-tilt><span>PERSONAL WORK</span></div></figure>'
@@ -1915,7 +1956,7 @@ function render(){
   setCollapsed(r.name !== 'home');
   lastPastHero = null; lastShape = '';
   requestScroll();
-  document.title = (r.name==='home' ? 'Vaibhav Bhardwaj — Designer'
+  document.title = (r.name==='home' ? 'Vaibhav Bhardwaj — Lead Visual & UI Designer'
     : r.name.charAt(0).toUpperCase()+r.name.slice(1)+' — Vaibhav Bhardwaj');
 }
 
