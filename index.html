@@ -606,7 +606,23 @@ body.has-reticle .cap__row{cursor:none}
 .contact__body{position:relative;z-index:2}
 .contact__title{font-size:var(--text-h2);font-weight:var(--weight-bold);
   line-height:1.05;letter-spacing:var(--tracking-display);max-width:15ch}
-.contact__cta{margin-top:var(--space-6)}
+.contact__cta{margin-top:var(--space-6);position:relative;display:inline-block}
+.talk{position:absolute;top:calc(100% + 10px);left:0;z-index:30;
+  display:flex;flex-direction:column;min-width:190px;
+  background:var(--color-surface);border:1px solid var(--color-border-strong);
+  border-radius:var(--radius-md);box-shadow:var(--shadow-panel);overflow:hidden;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity var(--duration-fast) var(--ease-ui),
+             transform var(--duration-fast) var(--ease-ui),
+             visibility var(--duration-fast) var(--ease-ui)}
+.talk.on{opacity:1;visibility:visible;transform:none}
+.talk__opt{display:block;padding:var(--space-4);font-size:var(--text-body);
+  border-bottom:1px solid var(--color-border-subtle);white-space:nowrap;
+  transition:background-color var(--duration-fast) var(--ease-ui),
+             color var(--duration-fast) var(--ease-ui)}
+.talk__opt:last-child{border-bottom:0}
+.talk__opt:hover{background:var(--color-surface-hover);color:var(--color-accent)}
+body.has-reticle .talk__opt{cursor:none}
 .contact__hint{margin-top:var(--space-8);font-size:var(--text-micro);
   letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--color-text-muted)}
 .contact .contact__hint::after{content:" \2192"}
@@ -834,6 +850,7 @@ var PHONE    = '+91 82337 03094';
 var PHONE_H  = 'tel:+918233703094';
 var EMAIL    = 'vaibhav20895@gmail.com';
 var EMAIL_H  = 'mailto:vaibhav20895@gmail.com';
+var EMAIL_C  = 'mailto:vaibhav20895@gmail.com?subject=Project%20enquiry';
 var LOCATION = 'Bengaluru, India';
 
 /* ============================================================================
@@ -1127,12 +1144,16 @@ function contactSection(eyebrow, title){
   + '<a class="key" id="key0" href="'+LINKEDIN+'" target="_blank" rel="noopener" aria-label="LinkedIn">'
   + '<span class="key__tag">LinkedIn</span></a>'
   + '<a class="key" id="key1" href="'+PHONE_H+'" aria-label="Call"><span class="key__tag">Call</span></a>'
-  + '<a class="key" id="key2" href="'+EMAIL_H+'" aria-label="Email"><span class="key__tag">Email</span></a></div>'
+  + '<a class="key" id="key2" href="'+EMAIL_C+'" aria-label="Email"><span class="key__tag">Email</span></a></div>'
   + '<div class="contact__grid">'
   + '<div class="contact__body sr">'
   + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+esc(eyebrow)+'</p>'
   + '<h2 class="contact__title px" data-px="0.04" id="contact-title">'+title+'</h2>'
-  + '<p class="contact__cta"><a class="cta cta--primary" href="'+EMAIL_H+'" data-magnetic>Let&rsquo;s talk '+ARROW+'</a></p>'
+  + '<p class="contact__cta"><a class="cta cta--primary" href="'+EMAIL_C+'" data-talk data-magnetic '
+  + 'aria-haspopup="true" aria-expanded="false" aria-controls="talk">Let&rsquo;s talk '+ARROW+'</a>'
+  + '<span class="talk" id="talk">'
+  + '<a class="talk__opt" href="'+PHONE_H+'">Call me</a>'
+  + '<a class="talk__opt" href="'+EMAIL_C+'">Email me</a></span></p>'
   + '<dl class="contact__links px" data-px="-0.03">'
   + '<div class="contact__link"><dt>Email</dt><dd><a href="'+EMAIL_H+'">'+EMAIL+'</a></dd></div>'
   + '<div class="contact__link"><dt>Call</dt><dd><a href="'+PHONE_H+'">'+PHONE+'</a></dd></div>'
@@ -1989,7 +2010,7 @@ addEventListener('hashchange', render);
    SELECTION BOXES — pull a handle and the box resizes, exactly the way a
    design tool would let you. It holds for a moment, then springs back.
    ========================================================================== */
-var SEL_HOLD = 900, SEL_MIN = 0.72, SEL_MAX = 1.34;
+var SEL_MIN = 0.72, SEL_MAX = 1.34;
 function bindSelectionBoxes(){
   [].slice.call(document.querySelectorAll('[data-sel]')).forEach(function(box){
     if (box._selBound) return;
@@ -2040,7 +2061,6 @@ function bindSelectionBoxes(){
         readout();
         try { h.setPointerCapture(e.pointerId); } catch(err){}
         clearTimeout(timer);
-        timer = setTimeout(release, SEL_HOLD);   /* only ever a moment */
       });
 
       h.addEventListener('pointermove', function(e){
@@ -2085,6 +2105,36 @@ function bindView(){
   });
 
   bindSelectionBoxes();
+
+  /* "Let's talk" offers the same two routes as the keys. */
+  var talkBtn = document.querySelector('[data-talk]');
+  var talk = document.getElementById('talk');
+  if (talkBtn && talk){
+    talkBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      var on = talk.classList.toggle('on');
+      talkBtn.setAttribute('aria-expanded', String(on));
+    });
+    talk.addEventListener('click', function(){ talk.classList.remove('on'); });
+  }
+  if (!bindView._talkGlobal){
+    bindView._talkGlobal = true;
+    document.addEventListener('click', function(e){
+      var t = document.getElementById('talk');
+      if (!t || !t.classList.contains('on')) return;
+      if (e.target.closest('#talk') || e.target.closest('[data-talk]')) return;
+      t.classList.remove('on');
+      var b = document.querySelector('[data-talk]');
+      if (b) b.setAttribute('aria-expanded','false');
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key !== 'Escape') return;
+      var t = document.getElementById('talk');
+      if (t) t.classList.remove('on');
+      var b = document.querySelector('[data-talk]');
+      if (b) b.setAttribute('aria-expanded','false');
+    });
+  }
 
   /* Capabilities — one row open at a time. Hover on a mouse, tap on touch. */
   var caps = [].slice.call(document.querySelectorAll('.cap'));
@@ -2164,13 +2214,21 @@ function bindView(){
 /* ============================================================================
    SCROLL
    ========================================================================== */
+var SHAPE_DWELL = 0.30;
 function shapeFromScroll(){
   var y = scrollY + innerHeight/2, last = centers.length-1;
   if (last < 0) return 0;
   if (y <= centers[0]) return 0;
   if (y >= centers[last]) return last;
   for (var i=0;i<last;i++){
-    if (y <= centers[i+1]) return i + (y-centers[i])/(centers[i+1]-centers[i]);
+    if (y <= centers[i+1]){
+      /* Hold each form fully built for the first and last stretch of its
+         section, so it reads as finished before the morph begins. */
+      var f = (y-centers[i])/(centers[i+1]-centers[i]);
+      f = f < SHAPE_DWELL ? 0
+        : (f > 1-SHAPE_DWELL ? 1 : (f-SHAPE_DWELL)/(1-2*SHAPE_DWELL));
+      return i + f;
+    }
   }
   return last;
 }
