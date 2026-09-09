@@ -607,20 +607,30 @@ body.has-reticle .cap__row{cursor:none}
 .contact__title{font-size:var(--text-h2);font-weight:var(--weight-bold);
   line-height:1.05;letter-spacing:var(--tracking-display);max-width:15ch}
 .contact__cta{margin-top:var(--space-6);position:relative;display:inline-block}
-.talk{position:absolute;top:calc(100% + 10px);left:0;z-index:30;
-  display:flex;flex-direction:column;min-width:190px;
+.talk{position:fixed;top:50%;left:50%;z-index:70;
+  display:flex;flex-direction:row;
   background:var(--color-surface);border:1px solid var(--color-border-strong);
   border-radius:var(--radius-md);box-shadow:var(--shadow-panel);overflow:hidden;
-  opacity:0;visibility:hidden;transform:translateY(-6px);
+  opacity:0;visibility:hidden;transform:translate(-50%,-50%) scale(.96);
   transition:opacity var(--duration-fast) var(--ease-ui),
              transform var(--duration-fast) var(--ease-ui),
              visibility var(--duration-fast) var(--ease-ui)}
-.talk.on{opacity:1;visibility:visible;transform:none}
-.talk__opt{display:block;padding:var(--space-4);font-size:var(--text-body);
-  border-bottom:1px solid var(--color-border-subtle);white-space:nowrap;
+.talk.on{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.talk__opt{display:block;padding:var(--space-6) clamp(28px,4vw,48px);
+  font-size:var(--text-body);text-align:center;
+  border-right:1px solid var(--color-border-subtle);white-space:nowrap;
   transition:background-color var(--duration-fast) var(--ease-ui),
              color var(--duration-fast) var(--ease-ui)}
-.talk__opt:last-child{border-bottom:0}
+.talk__opt:last-child{border-right:0}
+
+/* Confirmation that follows the cursor when an address is copied. */
+.copied{position:fixed;z-index:80;pointer-events:none;
+  padding:6px var(--space-3);border-radius:var(--radius-sm);
+  background:var(--color-accent);color:#050505;
+  font-size:var(--text-micro);letter-spacing:var(--tracking-wide);
+  white-space:nowrap;opacity:0;transform:translate(12px,-50%);
+  transition:opacity var(--duration-fast) var(--ease-ui)}
+.copied.on{opacity:1}
 .talk__opt:hover{background:var(--color-surface-hover);color:var(--color-accent)}
 body.has-reticle .talk__opt{cursor:none}
 .contact__hint{margin-top:var(--space-8);font-size:var(--text-micro);
@@ -803,6 +813,7 @@ body.has-reticle .keys.on .key{cursor:none}
   <span id="st-dim">—</span><span id="st-shape">PORTRAIT</span><span id="st-pos">X 0000&nbsp; Y 0000</span>
 </div>
 <div class="reticle" id="reticle" aria-hidden="true"></div>
+<div class="copied" id="copied" role="status" aria-live="polite"></div>
 
 <script>
 /* ============================================================================
@@ -2210,6 +2221,41 @@ function bindView(){
     });
   }
 }
+
+/* Any mail link copies the address as well as opening the mail app, so the
+   address is never lost on a machine with no mail client configured. */
+(function(){
+  var toast = document.getElementById('copied'), hideT = 0;
+  function show(x, y, msg){
+    toast.textContent = msg;
+    toast.style.left = x + 'px';
+    toast.style.top  = y + 'px';
+    toast.classList.add('on');
+    clearTimeout(hideT);
+    hideT = setTimeout(function(){ toast.classList.remove('on'); }, 1600);
+  }
+  function copy(text){
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).catch(fallback);
+    }
+    return fallback();
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch(err){}
+      document.body.removeChild(ta);
+    }
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (!a) return;
+    var addr = a.getAttribute('href').slice(7).split('?')[0];
+    copy(decodeURIComponent(addr));
+    show(e.clientX, e.clientY, 'Email id is copied');
+  });
+})();
 
 /* ============================================================================
    SCROLL
