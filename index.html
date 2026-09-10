@@ -1235,13 +1235,19 @@ function loadContent(){
       .then(function(r){ return r.ok ? r.json() : null; })
       .catch(function(){ return null; });
   }
-  return Promise.all([get('content/projects.json'), get('content/profile.json'),
-                      get('content/copy.json')])
+  /* Wording is split one file per route, so each page is edited on its own. */
+  var COPY_FILES = ['home','work','project','about','resume','contact','footer'];
+  var jobs = [get('content/projects.json'), get('content/profile.json')]
+    .concat(COPY_FILES.map(function(f){ return get('content/copy/'+f+'.json'); }));
+  return Promise.all(jobs)
     .then(function(res){
       var pj = res[0];
       if (pj && pj.projects && pj.projects.length) PROJECTS = pj.projects;
       applyProfile(res[1]);
-      if (res[2]) COPY = res[2];
+      res.slice(2).forEach(function(part){
+        if (!part) return;
+        Object.keys(part).forEach(function(k){ COPY[k] = part[k]; });
+      });
     })
     .catch(function(){});
 }
