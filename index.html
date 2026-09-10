@@ -1235,13 +1235,116 @@ function loadContent(){
       .then(function(r){ return r.ok ? r.json() : null; })
       .catch(function(){ return null; });
   }
-  return Promise.all([get('content/projects.json'), get('content/profile.json')])
+  return Promise.all([get('content/projects.json'), get('content/profile.json'),
+                      get('content/copy.json')])
     .then(function(res){
       var pj = res[0];
       if (pj && pj.projects && pj.projects.length) PROJECTS = pj.projects;
       applyProfile(res[1]);
+      if (res[2]) COPY = res[2];
     })
     .catch(function(){});
+}
+
+
+/* ---------------------------------------------------------------------------
+   EDITABLE COPY
+   Every visible string carries a key. COPY holds anything edited at /admin;
+   COPY_DEFAULT is the version compiled into this file, used whenever a key
+   has not been overridden or the content file cannot be loaded.
+   --------------------------------------------------------------------------- */
+var COPY = {};
+var COPY_DEFAULT = {
+  "hero.eyebrow": "Hi, I&rsquo;m Vaibhav Bhardwaj",
+  "hero.line1": "I design ideas,",
+  "hero.line2": "interfaces &amp;&nbsp;",
+  "hero.highlight": "experiences.",
+  "hero.cta2": "Get Resume ",
+  "home.workEyebrow": "01 — Selected work",
+  "home.workTitle": "Things I made, on purpose.",
+  "home.workSub": "A short selection. Each one is a whole story — these are the covers.",
+  "home.workCta": "View all work ",
+  "home.capsEyebrow": "02 — Capabilities",
+  "home.capsTitle": "Four ways in.",
+  "home.capsSub": "Hover a row to open it. One opens, the rest step back.",
+  "home.caseEyebrow": "03 — Featured case study",
+  "home.caseCta": "View case study ",
+  "home.aboutEyebrow": "04 — Who am i",
+  "home.aboutTitle": "The person behind the work.",
+  "home.aboutCta": "More about me ",
+  "home.expEyebrow": "05 — Experience",
+  "home.expTitle": "A short history.",
+  "home.expCta": "Full resume ",
+  "home.contactEyebrow": "06 — Contact",
+  "caseLabels.challenge": "Challenge",
+  "caseLabels.approach": "Approach",
+  "caseLabels.solution": "Solution",
+  "contact.cta": "Let&rsquo;s talk ",
+  "contact.callOpt": "Call me",
+  "contact.emailOpt": "Email me",
+  "contact.hint": "Press a key",
+  "contact.dtEmail": "Email",
+  "contact.dtCall": "Call",
+  "contact.dtLinkedin": "LinkedIn",
+  "contact.dtLocation": "Location",
+  "contact.linkedinText": "LINKEDIN PROFILE",
+  "footer.pages": "Pages",
+  "footer.elsewhere": "Elsewhere",
+  "footer.copyright": "© 2026 Vaibhav Bhardwaj",
+  "footer.credit": "Designed and built as one piece of work",
+  "work.eyebrow": "Archive",
+  "work.empty": "No projects in this discipline yet.",
+  "proj.introLabel": "Introduction",
+  "proj.challengeLabel": "The challenge",
+  "proj.challengeTitle": "What had to be solved.",
+  "proj.approachLabel": "The approach",
+  "proj.approachTitle": "How it was reframed.",
+  "proj.designLabel": "The design",
+  "proj.systemLabel": "Design system",
+  "proj.systemTitle": "The thinking behind it.",
+  "proj.outcomeLabel": "Outcome",
+  "proj.outcomeTitle": "Result.",
+  "proj.nextLabel": "Next project",
+  "proj.aboutLabel": "About the work",
+  "proj.workLabel": "The work",
+  "proj.workTitle": "Selected pieces.",
+  "about.eyebrow": "About",
+  "about.l1": "Designer.",
+  "about.l2": "Art director.",
+  "about.l3": "Visual thinker.",
+  "about.storyLabel": "Story",
+  "about.storyTitle": "How the practice took shape.",
+  "about.whoEyebrow": "Who am i",
+  "about.whoTitle": "The person behind the work.",
+  "about.philEyebrow": "Philosophy",
+  "about.philTitle": "Systems over one-offs.",
+  "about.pillar1t": "Start with the constraint",
+  "about.pillar2t": "Design the rules",
+  "about.pillar3t": "Sweat the small decisions",
+  "about.expEyebrow": "Experience",
+  "about.expTitle": "Where I&rsquo;ve worked.",
+  "about.personalLabel": "Off the clock",
+  "about.personalTitle": "The rest of it.",
+  "about.ctaTitle": "Let&rsquo;s make something.",
+  "resume.eyebrow": "Resume",
+  "resume.expTitle": "Professional timeline.",
+  "resume.eduEyebrow": "Education",
+  "resume.eduTitle": "Education.",
+  "resume.skillsLabel": "Skills",
+  "resume.skillsTitle": "Capabilities.",
+  "resume.toolsLabel": "Tools",
+  "resume.dlCta": "Download resume ",
+  "cta.brief": "Brief me",
+  "cta.formTitle": "Tell me what you&rsquo;re making.",
+  "form.name": "Name",
+  "form.email": "Email",
+  "form.type": "Project type",
+  "form.message": "Message",
+  "form.send": "Send "
+};
+function T(k){
+  var v = COPY[k];
+  return (v === undefined || v === null || v === '') ? (COPY_DEFAULT[k] || '') : v;
 }
 
 var reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -1301,9 +1404,9 @@ function expRows(list){
 function capabilitiesSection(shape){
   return '<section class="section" id="capabilities" data-shape="'+shape+'" aria-labelledby="cap-title">'
     + '<div class="section__head sr">'
-    + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>02 — Capabilities</p>'
-    + '<h2 class="section__title px" data-px="0.05" id="cap-title">Four ways in.</h2>'
-    + '<p class="section__sub">Hover a row to open it. One opens, the rest step back.</p></div>'
+    + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('home.capsEyebrow')+'</p>'
+    + '<h2 class="section__title px" data-px="0.05" id="cap-title">'+T('home.capsTitle')+'</h2>'
+    + '<p class="section__sub">'+T('home.capsSub')+'</p></div>'
     + '<div class="caps sr" id="caps">'
     + CAPS.map(function(c,ci){ return ''
         + '<div class="cap" data-cap="'+ci+'" data-open="'+(ci===0?'true':'false')+'">'
@@ -1329,19 +1432,19 @@ function footerSection(){
     + '<div class="footer__top">'
     + '<div><a class="footer__mark" href="#/" data-link>Vaibhav Bhardwaj<i>.</i></a>'
     + '<p class="section__sub" style="margin-top:var(--space-6)">Lead Visual &amp; UI Designer with 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel.</p></div>'
-    + '<div class="footer__col"><h3>Pages</h3><ul>'
+    + '<div class="footer__col"><h3>'+T('footer.pages')+'</h3><ul>'
     + '<li><a href="#/work" data-link>Work</a></li>'
     + '<li><a href="#/about" data-link>About</a></li>'
     + '<li><a href="#/resume" data-link>Resume</a></li>'
     + '<li><a href="#/contact" data-link>Contact</a></li></ul></div>'
-    + '<div class="footer__col"><h3>Elsewhere</h3>'
+    + '<div class="footer__col"><h3>'+T('footer.elsewhere')+'</h3>'
     + '<div class="footer__icons">'
     + '<a href="'+LINKEDIN+'" target="_blank" rel="noopener" aria-label="LinkedIn">'+IC_IN+'</a>'
     + '<a href="'+PHONE_H+'" aria-label="Call">'+IC_TEL+'</a>'
     + '<a href="'+INSTAGRAM+'" target="_blank" rel="noopener" aria-label="Instagram">'+IC_IG+'</a>'
     + '</div></div></div>'
-    + '<div class="footer__bottom"><span>© 2026 Vaibhav Bhardwaj</span>'
-    + '<span>Designed and built as one piece of work</span></div></footer>';
+    + '<div class="footer__bottom"><span>'+T('footer.copyright')+'</span>'
+    + '<span>'+T('footer.credit')+'</span></div></footer>';
 }
 
 /* ============================================================================
@@ -1351,58 +1454,58 @@ var VIEWS = {};
 
 VIEWS.home = function(){
   return '<section class="section hero" id="hero" data-shape='+PARTICLE_OBJECTS.homeHero+' aria-labelledby="hero-title">'
-  + '<div><p class="hero__eyebrow rv"><span class="rule" aria-hidden="true"></span>Hi, I&rsquo;m Vaibhav Bhardwaj</p>'
+  + '<div><p class="hero__eyebrow rv"><span class="rule" aria-hidden="true"></span>'+T('hero.eyebrow')+'</p>'
   + '<h1 class="hero__title" id="hero-title">'
-  + '<span class="hero__line"><span>I design ideas,</span></span>'
-  + '<span class="hero__line"><span>interfaces &amp;&nbsp;'+sel('experiences.')+'</span></span></h1>'
+  + '<span class="hero__line"><span>'+T('hero.line1')+'</span></span>'
+  + '<span class="hero__line"><span>'+T('hero.line2')+''+sel(''+T('hero.highlight')+'')+'</span></span></h1>'
   + '<p class="hero__support rv">Lead Visual &amp; UI Designer with 7+ years across AI, mobility, health-tech, e-commerce, SaaS and travel.</p>'
   + '<div class="hero__ctas rv">'
   + '<a class="cta cta--primary" href="#/contact" data-link data-magnetic>Let&rsquo;s talk '+ARROW+'</a>'
-  + '<a class="cta cta--secondary" href="#/resume" data-link data-magnetic>Get Resume '+ARROW+'</a>'
+  + '<a class="cta cta--secondary" href="#/resume" data-link data-magnetic>'+T('hero.cta2')+''+ARROW+'</a>'
   + '</div></div></section>'
 
   + '<section class="section" id="work" data-shape='+PARTICLE_OBJECTS.homeWork+' aria-labelledby="work-title">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>01 — Selected work</p>'
-  + '<h2 class="section__title px" data-px="0.05" id="work-title">Things I made, on purpose.</h2>'
-  + '<p class="section__sub">A short selection. Each one is a whole story — these are the covers.</p></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('home.workEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.05" id="work-title">'+T('home.workTitle')+'</h2>'
+  + '<p class="section__sub">'+T('home.workSub')+'</p></div>'
   + '<div class="work__list work__list--home">'
   + PROJECTS.slice(0,6).map(projectCard).join('') + '</div>'
-  + '<p class="cta-row sr"><a class="cta cta--primary" href="#/work" data-link data-magnetic>View all work '+ARROW+'</a></p></section>'
+  + '<p class="cta-row sr"><a class="cta cta--primary" href="#/work" data-link data-magnetic>'+T('home.workCta')+''+ARROW+'</a></p></section>'
 
   + capabilitiesSection(PARTICLE_OBJECTS.homeCaps)
 
   + '<section class="section" id="case" data-shape='+PARTICLE_OBJECTS.homeCase+' aria-labelledby="case-title">'
   + '<div class="section__head sr" style="max-width:none;margin-bottom:0">'
-  + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>03 — Featured case study</p></div>'
+  + '<p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('home.caseEyebrow')+'</p></div>'
   + '<div class="case__plate px sr" data-px="0.09" data-tilt aria-hidden="true">'
   + '<img src="'+PROJECTS[0].cover+'" alt="" loading="lazy" onerror="this.remove()">'
   + '<span class="case__watermark">'+esc(PROJECTS[0].title)+'</span></div>'
   + '<div class="sr"><h2 class="case__title px" data-px="-0.04" id="case-title">'+esc(PROJECTS[0].title)+'</h2>'
   + '<p class="section__sub">'+esc(PROJECTS[0].categories.join(' \u00B7 '))+' — '+esc(PROJECTS[0].client)+', '+PROJECTS[0].year+'</p>'
   + '<div class="case__grid">'
-  + '<div class="case__block"><h3>Challenge</h3><p>'+esc(PROJECTS[0].challenge)+'</p></div>'
-  + '<div class="case__block"><h3>Approach</h3><p>'+esc(PROJECTS[0].approach)+'</p></div>'
-  + '<div class="case__block"><h3>Solution</h3><p>'+esc(PROJECTS[0].solution)+'</p></div></div>'
-  + '<p class="about__cta"><a class="cta cta--primary" href="#/work/'+PROJECTS[0].slug+'" data-link data-magnetic>View case study '+ARROW+'</a></p></div></section>'
+  + '<div class="case__block"><h3>'+T('caseLabels.challenge')+'</h3><p>'+esc(PROJECTS[0].challenge)+'</p></div>'
+  + '<div class="case__block"><h3>'+T('caseLabels.approach')+'</h3><p>'+esc(PROJECTS[0].approach)+'</p></div>'
+  + '<div class="case__block"><h3>'+T('caseLabels.solution')+'</h3><p>'+esc(PROJECTS[0].solution)+'</p></div></div>'
+  + '<p class="about__cta"><a class="cta cta--primary" href="#/work/'+PROJECTS[0].slug+'" data-link data-magnetic>'+T('home.caseCta')+''+ARROW+'</a></p></div></section>'
 
   + '<section class="section" id="about" data-shape='+PARTICLE_OBJECTS.homeAbout+' aria-labelledby="about-title">'
-  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>04 — Who am i</p>'
+  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('home.aboutEyebrow')+'</p>'
   + '<div class="who"><div>'
-  + '<h2 class="about__title px" data-px="0.05" id="about-title" style="font-size:var(--text-h1);max-width:14ch">The person behind the work.</h2>'
+  + '<h2 class="about__title px" data-px="0.05" id="about-title" style="font-size:var(--text-h1);max-width:14ch">'+T('home.aboutTitle')+'</h2>'
   + '<div class="about__body px" data-px="-0.03">'
   + '<p>A self-taught designer, seven years in. I work across UI, marketing design, brand identity and motion &mdash; usually on the seam where a product team and a marketing team have to agree on something.</p>'
   + '<p>I care about systems that hold up after I leave the room, and about the small decisions nobody notices until they&rsquo;re wrong.</p></div>'
-  + '<p class="about__cta"><a class="cta cta--secondary" href="#/about" data-link data-magnetic>More about me '+ARROW+'</a></p></div>'
+  + '<p class="about__cta"><a class="cta cta--secondary" href="#/about" data-link data-magnetic>'+T('home.aboutCta')+''+ARROW+'</a></p></div>'
   + '<div class="frame px" data-px="0.07"><img src="images/portrait.png" alt="Vaibhav Bhardwaj" loading="lazy" onerror="this.remove()"></div>'
   + '</div></div></section>'
 
   + '<section class="section" id="experience" data-shape='+PARTICLE_OBJECTS.homeExperience+' aria-labelledby="exp-title">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>05 — Experience</p>'
-  + '<h2 class="section__title px" data-px="0.05" id="exp-title">A short history.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('home.expEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.05" id="exp-title">'+T('home.expTitle')+'</h2></div>'
   + expRows(EXPERIENCE)
-  + '<p class="about__cta sr"><a class="cta cta--secondary" href="#/resume" data-link data-magnetic>Full resume '+ARROW+'</a></p></section>'
+  + '<p class="about__cta sr"><a class="cta cta--secondary" href="#/resume" data-link data-magnetic>'+T('home.expCta')+''+ARROW+'</a></p></section>'
 
-  + contactSection('06 — Contact','Have something '+sel('worth making?'))
+  + contactSection(''+T('home.contactEyebrow')+'','Have something '+sel('worth making?'))
   + footerSection();
 };
 
@@ -1410,19 +1513,19 @@ VIEWS.home = function(){
    inside the section. The keys are hit areas laid over the drawn keycaps. */
 function talkButton(){
   return '<a class="cta cta--primary" href="'+EMAIL_C+'" data-talk data-magnetic '
-    + 'aria-haspopup="true" aria-expanded="false" aria-controls="talk">Let&rsquo;s talk '+ARROW+'</a>';
+    + 'aria-haspopup="true" aria-expanded="false" aria-controls="talk">'+T('contact.cta')+''+ARROW+'</a>';
 }
 function talkPopup(){
   return '<span class="talk-veil" id="talk-veil" aria-hidden="true"></span>'
     + '<span class="talk" id="talk">'
-    + '<a class="talk__opt" href="'+PHONE_H+'">Call me</a>'
-    + '<a class="talk__opt" href="'+EMAIL_C+'">Email me</a></span>';
+    + '<a class="talk__opt" href="'+PHONE_H+'">'+T('contact.callOpt')+'</a>'
+    + '<a class="talk__opt" href="'+EMAIL_C+'">'+T('contact.emailOpt')+'</a></span>';
 }
 function contactRows(){
-  return '<div class="contact__link"><dt>Email</dt><dd><a href="'+EMAIL_H+'">'+EMAIL+'</a></dd></div>'
-    + '<div class="contact__link"><dt>Call</dt><dd><a href="'+PHONE_H+'">'+PHONE+'</a></dd></div>'
-    + '<div class="contact__link"><dt>LinkedIn</dt><dd><a href="'+LINKEDIN+'" target="_blank" rel="noopener">LINKEDIN PROFILE</a></dd></div>'
-    + '<div class="contact__link"><dt>Location</dt><dd><span>'+LOCATION+'</span></dd></div>';
+  return '<div class="contact__link"><dt>'+T('contact.dtEmail')+'</dt><dd><a href="'+EMAIL_H+'">'+EMAIL+'</a></dd></div>'
+    + '<div class="contact__link"><dt>'+T('contact.dtCall')+'</dt><dd><a href="'+PHONE_H+'">'+PHONE+'</a></dd></div>'
+    + '<div class="contact__link"><dt>'+T('contact.dtLinkedin')+'</dt><dd><a href="'+LINKEDIN+'" target="_blank" rel="noopener">'+T('contact.linkedinText')+'</a></dd></div>'
+    + '<div class="contact__link"><dt>'+T('contact.dtLocation')+'</dt><dd><span>'+LOCATION+'</span></dd></div>';
 }
 function contactSection(eyebrow, title, slim){
   return '<section class="section contact" id="contact" data-shape='+PARTICLE_OBJECTS.contactKeys+' aria-labelledby="contact-title">'
@@ -1441,13 +1544,13 @@ function contactSection(eyebrow, title, slim){
     + contactRows()
     + '</dl>')
   + talkPopup()
-  + '<p class="contact__hint">Press a key</p></div>'
+  + '<p class="contact__hint">'+T('contact.hint')+'</p></div>'
   + '<div class="contact__stage" aria-hidden="true"></div></div></section>';
 }
 
 VIEWS.work = function(){
   return '<section class="section" id="work-intro" data-shape='+PARTICLE_OBJECTS.workPage+' aria-labelledby="w-title">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Archive</p>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('work.eyebrow')+'</p>'
   + '<h1 class="about__title px" data-px="0.04" id="w-title">'+sel('Work.','violet')+'</h1>'
   + '<p class="section__sub">A collection of selected work across brand, digital and visual design. '
   + 'Filter by discipline, or read straight through — each project opens into a full case study.</p></div>'
@@ -1466,7 +1569,7 @@ VIEWS.work = function(){
   + '</div>'
   + '<div class="work__list work__list--archive" id="archive">'
   + PROJECTS.map(projectCard).join('') + '</div>'
-  + '<p class="filter-empty sr" id="empty" hidden>No projects in this discipline yet.</p></section>'
+  + '<p class="filter-empty sr" id="empty" hidden>'+T('work.empty')+'</p></section>'
   + footerSection();
 };
 
@@ -1489,27 +1592,27 @@ VIEWS.project = function(slug){
   + '<span class="case__watermark">'+esc(p.title)+'</span></div></section>'
 
   + '<section class="section section--auto" id="p-intro" data-shape="artboard" aria-labelledby="p-intro-t">'
-  + '<div class="split sr"><div><p class="split__label">Introduction</p></div>'
+  + '<div class="split sr"><div><p class="split__label">'+T('proj.introLabel')+'</p></div>'
   + '<div><h2 class="section__title" id="p-intro-t" style="font-size:var(--text-h3)">'+esc(p.shortDescription)+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)"><p>'+esc(p.description)+'</p></div>'
   + '<div class="taglist" style="margin-top:var(--space-8)">'
   + p.role.map(function(r){ return '<li>'+esc(r)+'</li>'; }).join('') + '</div></div></div></section>'
 
   + '<section class="section section--auto" id="p-challenge" data-shape="pen" aria-labelledby="p-ch-t">'
-  + '<div class="split sr"><div><p class="split__label">The challenge</p></div>'
-  + '<div><h2 class="section__title" id="p-ch-t" style="font-size:var(--text-h3)">What had to be solved.</h2>'
+  + '<div class="split sr"><div><p class="split__label">'+T('proj.challengeLabel')+'</p></div>'
+  + '<div><h2 class="section__title" id="p-ch-t" style="font-size:var(--text-h3)">'+T('proj.challengeTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)"><p>'+esc(p.challenge)+'</p></div></div></div>'
   + '<div class="gal sr" style="margin-top:clamp(48px,8vh,96px)">'
   + '<figure class="w-wide"><div class="plate r-16-9 px" data-px="0.07" data-tilt><span>REFERENCE / EXPLORATION</span></div>'
   + '<figcaption>Placeholder — early exploration.</figcaption></figure></div></section>'
 
   + '<section class="section section--auto" id="p-approach" data-shape="pen" aria-labelledby="p-ap-t">'
-  + '<div class="split sr"><div><p class="split__label">The approach</p></div>'
-  + '<div><h2 class="section__title" id="p-ap-t" style="font-size:var(--text-h3)">How it was reframed.</h2>'
+  + '<div class="split sr"><div><p class="split__label">'+T('proj.approachLabel')+'</p></div>'
+  + '<div><h2 class="section__title" id="p-ap-t" style="font-size:var(--text-h3)">'+T('proj.approachTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)"><p>'+esc(p.approach)+'</p></div></div></div></section>'
 
   + '<section class="section section--auto" id="p-design" data-shape="laptop" aria-labelledby="p-de-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>The design</p>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('proj.designLabel')+'</p>'
   + '<h2 class="section__title px" data-px="0.04" id="p-de-t">'+esc(p.solution)+'</h2></div>'
   + '<div class="gal">'
   + p.gallery.map(function(g,gi){ return '<figure class="'+g[0]+' sr">'
@@ -1518,8 +1621,8 @@ VIEWS.project = function(slug){
   + '</div></section>'
 
   + '<section class="section section--auto" id="p-system" data-shape="artboard" aria-labelledby="p-sy-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Design system</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="p-sy-t">The thinking behind it.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('proj.systemLabel')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="p-sy-t">'+T('proj.systemTitle')+'</h2></div>'
   + '<div class="sys sr">'
   + '<div class="sys__card px" data-px="0.05" data-tilt><h4>Typography</h4><p class="sys__type">Aa Bb Cc'
   + '<small>TYPEFACE NAME — display / text</small></p></div>'
@@ -1536,8 +1639,8 @@ VIEWS.project = function(slug){
   + '<li><span>Easing</span><span>cubic-bezier(.16,1,.3,1)</span></li></ul></div></div></section>'
 
   + '<section class="section section--auto" id="p-outcome" data-shape="portraitframe" aria-labelledby="p-ou-t">'
-  + '<div class="split sr"><div><p class="split__label">Outcome</p></div>'
-  + '<div><h2 class="section__title" id="p-ou-t" style="font-size:var(--text-h3)">Result.</h2>'
+  + '<div class="split sr"><div><p class="split__label">'+T('proj.outcomeLabel')+'</p></div>'
+  + '<div><h2 class="section__title" id="p-ou-t" style="font-size:var(--text-h3)">'+T('proj.outcomeTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)"><p>'+esc(p.outcome)+'</p></div></div></div>'
   + '<dl class="meta-block sr" style="margin-top:clamp(48px,8vh,96px)">'
   + '<div><dt>Client</dt><dd>'+esc(p.client)+'</dd></div>'
@@ -1550,7 +1653,7 @@ VIEWS.project = function(slug){
 
   + '<section class="section section--auto" id="p-next" data-shape="layers" aria-label="Next project">'
   + '<a class="next sr" href="#/work/'+nx.slug+'" data-link data-tilt>'
-  + '<span class="next__label">Next project</span>'
+  + '<span class="next__label">'+T('proj.nextLabel')+'</span>'
   + '<span class="next__title">'+esc(nx.title)+' '+ARROW+'</span>'
   + '<span class="next__plate px" data-px="0.07">'
   + (nx.cover ? '<img src="'+nx.cover+'" alt="" loading="lazy" onerror="this.remove()">' : '')
@@ -1573,15 +1676,15 @@ function showcaseView(p, nx){
   + '<span class="case__watermark">'+esc(p.title)+'</span></div></section>'
 
   + '<section class="section section--auto" id="p-intro" data-shape="'+PARTICLE_OBJECTS.workPage+'" aria-labelledby="p-intro-t">'
-  + '<div class="split sr"><div><p class="split__label">About the work</p></div>'
+  + '<div class="split sr"><div><p class="split__label">'+T('proj.aboutLabel')+'</p></div>'
   + '<div><h2 class="section__title" id="p-intro-t" style="font-size:var(--text-h3)">'+esc(p.shortDescription)+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)"><p>'+esc(p.description)+'</p></div>'
   + '<div class="taglist" style="margin-top:var(--space-8)">'
   + p.role.map(function(r){ return '<li>'+esc(r)+'</li>'; }).join('') + '</div></div></div></section>'
 
   + '<section class="section section--auto" id="p-gallery" data-shape="'+PARTICLE_OBJECTS.workPage+'" aria-label="Selected pieces">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>The work</p>'
-  + '<h2 class="section__title px" data-px="0.04">Selected pieces.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('proj.workLabel')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04">'+T('proj.workTitle')+'</h2></div>'
   + '<div class="gal">'
   + p.gallery.map(function(g,gi){ return '<figure class="'+g[0]+' sr">'
       + '<div class="plate '+g[1]+' px" data-px="'+(gi%2?0.06:0.10)+'" data-tilt><span>'+esc(g[2])+'</span></div>'
@@ -1600,7 +1703,7 @@ function showcaseView(p, nx){
 
   + '<section class="section section--auto" id="p-next" data-shape="'+PARTICLE_OBJECTS.workPage+'" aria-label="Next project">'
   + '<a class="next sr" href="#/work/'+nx.slug+'" data-link data-tilt>'
-  + '<span class="next__label">Next project</span>'
+  + '<span class="next__label">'+T('proj.nextLabel')+'</span>'
   + '<span class="next__title">'+esc(nx.title)+' '+ARROW+'</span>'
   + '<span class="next__plate px" data-px="0.07">'
   + (nx.cover ? '<img src="'+nx.cover+'" alt="" loading="lazy" onerror="this.remove()">' : '')
@@ -1611,46 +1714,46 @@ function showcaseView(p, nx){
 
 VIEWS.about = function(){
   return '<section class="section" id="a-intro" data-shape='+PARTICLE_OBJECTS.aboutPage+' aria-labelledby="a-title">'
-  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>About</p>'
-  + '<h1 class="about__title px" data-px="0.04" id="a-title">Designer.<br>Art director.<br>'
-  + sel('Visual thinker.','lime')+'</h1>'
+  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('about.eyebrow')+'</p>'
+  + '<h1 class="about__title px" data-px="0.04" id="a-title">'+T('about.l1')+'<br>'+T('about.l2')+'<br>'
+  + sel(''+T('about.l3')+'','lime')+'</h1>'
   + '<div class="about__body px" data-px="-0.03">'
   + '<p>Lead Visual &amp; UI Designer with 7+ years delivering UI design, marketing design, branding and digital experiences across AI, mobility, health-tech, e-commerce, SaaS and travel. Most recently leading creative at ConverzAI, before that Design Manager at OLA.</p></div></div></section>'
 
   + '<section class="section section--auto" id="a-story" data-shape="pen" aria-labelledby="a-story-t">'
-  + '<div class="split sr"><div><p class="split__label">Story</p></div>'
-  + '<div><h2 class="section__title" id="a-story-t" style="font-size:var(--text-h3)">How the practice took shape.</h2>'
+  + '<div class="split sr"><div><p class="split__label">'+T('about.storyLabel')+'</p></div>'
+  + '<div><h2 class="section__title" id="a-story-t" style="font-size:var(--text-h3)">'+T('about.storyTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
   + '<p>I trained as a mechanical engineer at Rajasthan Technical University, then taught myself design and started in 2019 at Thrillophilia in Jaipur, making campaign work for a travel business.</p>'
   + '<p>Seven years later the work has moved through travel, automotive, e-commerce, health-tech, mobility and AI. What carried across every one of them is the same instinct: find the constraint first, then design the rules rather than the one-off.</p>'
   + '<p>The problems I most enjoy sit between teams — where product needs one thing, marketing needs another, and the job is a system that lets both ship without a designer in the room every time.</p></div></div></div></section>'
 
   + '<section class="section section--auto" id="a-who" data-shape='+PARTICLE_OBJECTS.aboutPage+' aria-labelledby="a-who-t">'
-  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Who am i</p>'
-  + '<div class="who"><div><h2 class="section__title px" data-px="0.04" id="a-who-t">The person behind the work.</h2>'
+  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('about.whoEyebrow')+'</p>'
+  + '<div class="who"><div><h2 class="section__title px" data-px="0.04" id="a-who-t">'+T('about.whoTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
   + '<p>Self-taught designer, seven years in, currently leading creative at ConverzAI. Before that Design Manager at OLA, and Senior Designer at MediBuddy and Myntra.</p></div></div>'
   + '<div class="frame px" data-px="0.07"><img src="images/portrait.png" alt="Vaibhav Bhardwaj" loading="lazy" onerror="this.remove()"></div>'
   + '</div></div></section>'
 
   + '<section class="section section--auto" id="a-philosophy" data-shape="artboard" aria-labelledby="a-phi-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Philosophy</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="a-phi-t">Systems over one-offs.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('about.philEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="a-phi-t">'+T('about.philTitle')+'</h2></div>'
   + '<div class="pillars sr">'
-  + '<div class="pillar px" data-px="0.05"><b>Start with the constraint</b><p>The real brief is usually hiding behind the stated one. Finding it is most of the work.</p></div>'
-  + '<div class="pillar px" data-px="0.09"><b>Design the rules</b><p>A system others can extend beats a beautiful dead end. Guidelines, components and rules outlive any single campaign.</p></div>'
-  + '<div class="pillar px" data-px="0.05"><b>Sweat the small decisions</b><p>Nobody notices the small decisions until they are wrong. Spacing, hierarchy and timing are where the work actually lands.</p></div></div></section>'
+  + '<div class="pillar px" data-px="0.05"><b>'+T('about.pillar1t')+'</b><p>The real brief is usually hiding behind the stated one. Finding it is most of the work.</p></div>'
+  + '<div class="pillar px" data-px="0.09"><b>'+T('about.pillar2t')+'</b><p>A system others can extend beats a beautiful dead end. Guidelines, components and rules outlive any single campaign.</p></div>'
+  + '<div class="pillar px" data-px="0.05"><b>'+T('about.pillar3t')+'</b><p>Nobody notices the small decisions until they are wrong. Spacing, hierarchy and timing are where the work actually lands.</p></div></div></section>'
 
   + '<section class="section section--auto" id="a-exp" data-shape="laptop" aria-labelledby="a-exp-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Experience</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="a-exp-t">Where I&rsquo;ve worked.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('about.expEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="a-exp-t">'+T('about.expTitle')+'</h2></div>'
   + expRows(EXPERIENCE) + '</section>'
 
   + capabilitiesSection(PARTICLE_OBJECTS.homeCaps)
 
   + '<section class="section section--auto" id="a-personal" data-shape='+PARTICLE_OBJECTS.aboutPage+' aria-labelledby="a-per-t">'
-  + '<div class="split sr"><div><p class="split__label">Off the clock</p></div>'
-  + '<div><h2 class="section__title" id="a-per-t" style="font-size:var(--text-h3)">The rest of it.</h2>'
+  + '<div class="split sr"><div><p class="split__label">'+T('about.personalLabel')+'</p></div>'
+  + '<div><h2 class="section__title" id="a-per-t" style="font-size:var(--text-h3)">'+T('about.personalTitle')+'</h2>'
   + '<div class="prose" style="margin-top:var(--space-6)">'
   + '<p>DRAFT — side experiments, motion tests and generative work. Replace this with what you actually want here.</p></div>'
   + '<div class="gal" style="margin-top:var(--space-8)">'
@@ -1659,42 +1762,42 @@ VIEWS.about = function(){
   + '</div></div></div></section>'
 
   + '<section class="section" id="a-cta" data-shape="artboard" aria-labelledby="a-cta-t">'
-  + '<div class="sr"><h2 class="about__title px" data-px="0.04" id="a-cta-t">Let&rsquo;s make something.</h2>'
+  + '<div class="sr"><h2 class="about__title px" data-px="0.04" id="a-cta-t">'+T('about.ctaTitle')+'</h2>'
   + '<p class="about__cta"><a class="cta cta--primary cta--big" href="#/contact" data-link data-magnetic>Let&rsquo;s talk '+ARROW+'</a></p></div></section>'
   + footerSection();
 };
 
 VIEWS.resume = function(){
   return '<section class="section" id="r-intro" data-shape='+PARTICLE_OBJECTS.resumePage+' aria-labelledby="r-title">'
-  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Resume</p>'
+  + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('resume.eyebrow')+'</p>'
   + '<h1 class="about__title px" data-px="0.04" id="r-title">Resume.</h1>'
   + '<p class="section__sub">The functional version. Experience, education, skills and tools — '
   + 'and a PDF when you need one to forward.</p>'
   + '<p class="about__cta"><a class="cta cta--primary" id="dl-top" href="'+RESUME_PDF+'" '
-  + 'download target="_blank" rel="noopener" data-magnetic>Download resume '+ARROW+'</a></p></div></section>'
+  + 'download target="_blank" rel="noopener" data-magnetic>'+T('resume.dlCta')+''+ARROW+'</a></p></div></section>'
 
   + '<section class="section section--auto" id="r-exp" data-shape="laptop" aria-labelledby="r-exp-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Experience</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="r-exp-t">Professional timeline.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('about.expEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="r-exp-t">'+T('resume.expTitle')+'</h2></div>'
   + expRows(EXPERIENCE) + '</section>'
 
   + '<section class="section section--auto" id="r-edu" data-shape='+PARTICLE_OBJECTS.resumePage+' aria-labelledby="r-edu-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Education</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="r-edu-t">Education.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('resume.eduEyebrow')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="r-edu-t">'+T('resume.eduTitle')+'</h2></div>'
   + expRows(EDUCATION) + '</section>'
 
   + '<section class="section section--auto" id="r-skills" data-shape="pen" aria-labelledby="r-sk-t">'
-  + '<div class="split sr"><div><p class="split__label">Skills</p>'
-  + '<h2 class="section__title" id="r-sk-t" style="font-size:var(--text-h3);margin-top:var(--space-3)">Capabilities.</h2></div>'
+  + '<div class="split sr"><div><p class="split__label">'+T('resume.skillsLabel')+'</p>'
+  + '<h2 class="section__title" id="r-sk-t" style="font-size:var(--text-h3);margin-top:var(--space-3)">'+T('resume.skillsTitle')+'</h2></div>'
   + '<ul class="taglist">' + SKILLS.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join('') + '</ul></div>'
-  + '<div class="split sr" style="margin-top:clamp(48px,8vh,96px)"><div><p class="split__label">Tools</p></div>'
+  + '<div class="split sr" style="margin-top:clamp(48px,8vh,96px)"><div><p class="split__label">'+T('resume.toolsLabel')+'</p></div>'
   + '<ul class="taglist">' + TOOLS.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join('') + '</ul></div></section>'
 
   + '<section class="section" id="r-dl" data-shape='+PARTICLE_OBJECTS.resumePage+' aria-labelledby="r-dl-t">'
   + '<div class="sr"><h2 class="about__title px" data-px="0.04" id="r-dl-t">Take it '+sel('with you.')+'</h2>'
   + '<p class="section__sub">A PDF version of everything above, ready to forward.</p>'
   + '<p class="about__cta"><a class="cta cta--primary cta--big" href="'+RESUME_PDF+'" '
-  + 'download target="_blank" rel="noopener" data-magnetic>Download resume '+ARROW+'</a></p>'
+  + 'download target="_blank" rel="noopener" data-magnetic>'+T('resume.dlCta')+''+ARROW+'</a></p>'
   + '<p class="contact__hint" style="margin-top:var(--space-6)">PDF &middot; 156 KB</p></div></section>'
   + footerSection();
 };
@@ -1710,23 +1813,23 @@ VIEWS.contact = function(){
   + '</div></section>'
 
   + '<section class="section section--auto" id="c-form" data-shape='+PARTICLE_OBJECTS.contactPage+' aria-labelledby="c-form-t">'
-  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Brief me</p>'
-  + '<h2 class="section__title px" data-px="0.04" id="c-form-t">Tell me what you&rsquo;re making.</h2></div>'
+  + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('cta.brief')+'</p>'
+  + '<h2 class="section__title px" data-px="0.04" id="c-form-t">'+T('cta.formTitle')+'</h2></div>'
   + '<form class="form sr" id="contact-form" novalidate>'
-  + '<div class="field"><label for="f-name">Name</label>'
+  + '<div class="field"><label for="f-name">'+T('form.name')+'</label>'
   + '<input id="f-name" name="name" type="text" autocomplete="name" required>'
   + '<span class="err">Please add your name</span></div>'
-  + '<div class="field"><label for="f-email">Email</label>'
+  + '<div class="field"><label for="f-email">'+T('form.email')+'</label>'
   + '<input id="f-email" name="email" type="email" autocomplete="email" required>'
   + '<span class="err">Please add a valid email</span></div>'
-  + '<div class="field field--wide"><label for="f-type">Project type</label>'
+  + '<div class="field field--wide"><label for="f-type">'+T('form.type')+'</label>'
   + '<select id="f-type" name="type"><option>Branding</option><option>Social</option>'
   + '<option>UI/UX</option><option>Digital</option><option>Motion</option><option>Print</option>'
   + '<option>Something else</option></select></div>'
-  + '<div class="field field--wide"><label for="f-msg">Message</label>'
+  + '<div class="field field--wide"><label for="f-msg">'+T('form.message')+'</label>'
   + '<textarea id="f-msg" name="message" required></textarea>'
   + '<span class="err">Please add a message</span></div>'
-  + '<div class="form__foot"><button class="cta cta--primary" type="submit" data-magnetic>Send '+ARROW+'</button>'
+  + '<div class="form__foot"><button class="cta cta--primary" type="submit" data-magnetic>'+T('form.send')+''+ARROW+'</button>'
   + '<span class="form__status" id="form-status" role="status" aria-live="polite"></span></div>'
   + '</form></section>'
 
