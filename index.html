@@ -1092,7 +1092,7 @@ var PROJECTS = [
     gallery:[['w-full','r-16-9','Landing page'],['w-narrow','r-3-4','Typography'],
              ['w-wide','r-16-9','Category zones'],['w-full','r-21-9','In context']] },
 
-  { id:9, slug:'ola-social-posts', title:'Scooter Launch Event', client:'OLA', year:'2024',
+  { id:9, slug:'ola-social-posts', title:'Social Campaign Posts', client:'OLA', year:'2025',
     cover:PROJECTS_COVER[2],
     categories:['Social','Digital'], role:['Social Design','Art Direction'],
     shortDescription:'DUMMY \u2014 a run of social posts across campaign moments.',
@@ -1191,6 +1191,43 @@ var SKILLS = ['Creative Direction','Creative Strategy','End-to-End Design','UI D
 var TOOLS = ['Figma','Adobe Photoshop','Adobe Illustrator','Adobe InDesign',
   'Adobe After Effects','Adobe Premiere Pro','Adobe XD','Midjourney','Leonardo.Ai',
   'ChatGPT','Gemini'];
+
+/* ---------------------------------------------------------------------------
+   CONTENT LOADING
+   Projects and profile details live in content/*.json so they can be edited
+   from /admin. The copies compiled into this file act as a fallback: if a
+   fetch fails, the site still renders with the last known-good content.
+   --------------------------------------------------------------------------- */
+function applyProfile(d){
+  if (!d) return;
+  if (d.email){ EMAIL = d.email; EMAIL_H = 'mailto:'+d.email;
+                EMAIL_C = 'mailto:'+d.email+'?subject=Project%20enquiry'; }
+  if (d.phone) PHONE = d.phone;
+  if (d.phoneHref) PHONE_H = d.phoneHref;
+  if (d.linkedin) LINKEDIN = d.linkedin;
+  if (d.behance) BEHANCE = d.behance;
+  if (d.instagram) INSTAGRAM = d.instagram;
+  if (d.location) LOCATION = d.location;
+  if (d.resumePdf) RESUME_PDF = d.resumePdf;
+  if (d.experience && d.experience.length) EXPERIENCE = d.experience;
+  if (d.education && d.education.length) EDUCATION = d.education;
+  if (d.skills && d.skills.length) SKILLS = d.skills;
+  if (d.tools && d.tools.length) TOOLS = d.tools;
+}
+function loadContent(){
+  function get(url){
+    return fetch(url, { cache:'no-cache' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+  }
+  return Promise.all([get('content/projects.json'), get('content/profile.json')])
+    .then(function(res){
+      var pj = res[0];
+      if (pj && pj.projects && pj.projects.length) PROJECTS = pj.projects;
+      applyProfile(res[1]);
+    })
+    .catch(function(){});
+}
 
 var reduced = matchMedia('(prefers-reduced-motion: reduce)');
 var fine    = matchMedia('(pointer: fine)');
@@ -2884,8 +2921,10 @@ if (fine.matches && !reduced.matches){
 var started=false;
 function start(){
   if (started) return; started=true;
-  render();
-  requestAnimationFrame(function(){ document.body.classList.add('is-ready'); });
+  loadContent().then(function(){
+    render();
+    requestAnimationFrame(function(){ document.body.classList.add('is-ready'); });
+  });
 }
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(start, start);
 setTimeout(start, 1200);
