@@ -854,6 +854,7 @@ function decodeGrid(src){
 /* ============================================================================
    CONTACT DETAILS — one place to swap the real values in.
    ========================================================================== */
+var RESUME_PDF = 'Vaibhav-Bhardwaj-Resume.pdf';
 var LINKEDIN = 'https://in.linkedin.com/in/vaibhav-bhardwaj-064359140';
 var BEHANCE  = 'https://www.behance.net/vbhardwaj';
 var INSTAGRAM= 'https://www.instagram.com/_bhardwaj_ji_/';
@@ -1346,8 +1347,8 @@ VIEWS.resume = function(){
   + '<h1 class="about__title px" data-px="0.04" id="r-title">Resume.</h1>'
   + '<p class="section__sub">The functional version. Experience, education, skills and tools — '
   + 'and a PDF when you need one to forward.</p>'
-  + '<p class="about__cta"><a class="cta cta--primary" id="dl-top" href="#/resume" data-magnetic '
-  + 'data-download>Download resume '+ARROW+'</a></p></div></section>'
+  + '<p class="about__cta"><a class="cta cta--primary" id="dl-top" href="'+RESUME_PDF+'" '
+  + 'download target="_blank" rel="noopener" data-magnetic>Download resume '+ARROW+'</a></p></div></section>'
 
   + '<section class="section section--auto" id="r-exp" data-shape="laptop" aria-labelledby="r-exp-t">'
   + '<div class="section__head sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Experience</p>'
@@ -1368,10 +1369,10 @@ VIEWS.resume = function(){
 
   + '<section class="section" id="r-dl" data-shape="document" aria-labelledby="r-dl-t">'
   + '<div class="sr"><h2 class="about__title px" data-px="0.04" id="r-dl-t">Take it '+sel('with you.')+'</h2>'
-  + '<p class="section__sub">Point this at the real PDF when it exists — it is a single href change.</p>'
-  + '<p class="about__cta"><a class="cta cta--primary cta--big" href="#/resume" data-magnetic '
-  + 'data-download>Download resume '+ARROW+'</a></p>'
-  + '<p class="contact__hint" style="margin-top:var(--space-6)" id="dl-note">PDF not yet attached</p></div></section>'
+  + '<p class="section__sub">A PDF version of everything above, ready to forward.</p>'
+  + '<p class="about__cta"><a class="cta cta--primary cta--big" href="'+RESUME_PDF+'" '
+  + 'download target="_blank" rel="noopener" data-magnetic>Download resume '+ARROW+'</a></p>'
+  + '<p class="contact__hint" style="margin-top:var(--space-6)">PDF &middot; 156 KB</p></div></section>'
   + footerSection();
 };
 
@@ -2192,15 +2193,6 @@ function bindView(){
       });
     });
   }
-
-  /* Resume download — wired, with no PDF attached yet. */
-  [].slice.call(document.querySelectorAll('[data-download]')).forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.preventDefault();
-      var note = document.getElementById('dl-note');
-      if (note){ note.textContent = 'PDF not yet attached — set the href when it exists'; }
-    });
-  });
 
   /* Contact form — front-end validation and a placeholder submit state only. */
   var form = document.getElementById('contact-form');
