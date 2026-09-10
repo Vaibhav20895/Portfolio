@@ -1776,7 +1776,7 @@ VIEWS.about = function(){
 VIEWS.resume = function(){
   return '<section class="section" id="r-intro" data-shape='+PARTICLE_OBJECTS.resumePage+' aria-labelledby="r-title">'
   + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('resume.eyebrow')+'</p>'
-  + '<h1 class="about__title px" data-px="0.04" id="r-title">Resume.</h1>'
+  + '<h1 class="about__title px" data-px="0.04" id="r-title">'+sel('Resume.','white')+'</h1>'
   + '<p class="section__sub">The functional version. Experience, education, skills and tools — '
   + 'and a PDF when you need one to forward.</p>'
   + '<p class="about__cta"><a class="cta cta--primary" id="dl-top" href="'+RESUME_PDF+'" '
@@ -1811,7 +1811,7 @@ VIEWS.resume = function(){
 VIEWS.contact = function(){
   return '<section class="section" id="c-intro" data-shape='+PARTICLE_OBJECTS.contactPage+' aria-labelledby="c-title">'
   + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>Contact</p>'
-  + '<h1 class="about__title px" data-px="0.04" id="c-title">Let&rsquo;s make<br>something<br><em>interesting.</em></h1>'
+  + '<h1 class="about__title px" data-px="0.04" id="c-title">Let&rsquo;s make<br>something<br>'+sel('interesting.')+'</h1>'
   + '<dl class="contact__links px" data-px="-0.03" style="max-width:900px">'
   + contactRows() + '</dl>'
   + '<p class="contact__cta" style="margin-top:var(--space-8);text-align:right">'
