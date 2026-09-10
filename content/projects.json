@@ -1,0 +1,854 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "slug": "boohoo-myntra",
+      "title": "The Boohoo Group",
+      "client": "Myntra",
+      "year": "2022",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/809935221753013.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "UI/UX",
+        "Digital"
+      ],
+      "role": [
+        "UI Design",
+        "Landing Page Design",
+        "Visual Design"
+      ],
+      "shortDescription": "A brand store landing page for The Boohoo Group on Myntra.",
+      "description": "A dedicated brand store experience for The Boohoo Group on the Myntra platform, covering the landing page, category entry points and the promotional modules that sit above the product grid.",
+      "challenge": "DRAFT — Boohoo needed a storefront on Myntra that felt like its own brand rather than another category page, while still working inside Myntra’s existing templates, grid and component library.",
+      "approach": "DRAFT — Started from the brand’s own visual language and worked backwards into what Myntra’s system could actually support, so the page reads as Boohoo without needing engineering exceptions.",
+      "solution": "DRAFT — A modular landing page with a full-bleed brand moment at the top, editorial category blocks beneath it, and promotional slots that merchandising can swap without a designer.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Art Direction",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+34%",
+          "Engagement"
+        ],
+        [
+          "2.1×",
+          "Time on page"
+        ],
+        [
+          "58K",
+          "Sessions"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-16-9",
+          "Landing page"
+        ],
+        [
+          "w-half-l",
+          "r-3-4",
+          "Category blocks"
+        ],
+        [
+          "w-half-r",
+          "r-3-4",
+          "Promotional modules"
+        ],
+        [
+          "w-wide",
+          "r-21-9",
+          "Responsive"
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "adidas-myntra",
+      "title": "Adidas Brand Store",
+      "client": "Myntra",
+      "year": "2022",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/0c1bdf221581115.Y3JvcCwxNjE2LDEyNjQsMCww.jpg",
+      "categories": [
+        "UI/UX",
+        "Digital"
+      ],
+      "role": [
+        "UI Design",
+        "Landing Page Design",
+        "Art Direction"
+      ],
+      "shortDescription": "A brand store landing page for Adidas on Myntra.",
+      "description": "Landing page design for the Adidas brand store on Myntra, built to carry Adidas’ performance-led identity through a marketplace layout.",
+      "challenge": "DRAFT — Adidas has one of the most tightly governed brand systems in the category. The page had to satisfy those guidelines and Myntra’s conversion requirements at the same time.",
+      "approach": "DRAFT — Treated the brand guideline as the constraint rather than the decoration: typography, spacing and the black-and-white base came first, merchandising modules were fitted around them.",
+      "solution": "DRAFT — A high-contrast landing page anchored by a hero campaign frame, with performance and lifestyle split into distinct scroll zones so both audiences find their entry point quickly.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Art Direction",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+27%",
+          "Click-through"
+        ],
+        [
+          "1.8×",
+          "Scroll depth"
+        ],
+        [
+          "74K",
+          "Impressions"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-16-9",
+          "Hero campaign frame"
+        ],
+        [
+          "w-narrow",
+          "r-3-4",
+          "Typography"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "Category zones"
+        ],
+        [
+          "w-full",
+          "r-21-9",
+          "In context"
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "roadster-garage-sale",
+      "title": "Roadster Grand Garage Sale",
+      "client": "Myntra",
+      "year": "2022",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/cb6c73143074891.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Digital",
+        "UI/UX",
+        "Social"
+      ],
+      "role": [
+        "Campaign Design",
+        "Landing Page Design",
+        "Visual Design"
+      ],
+      "shortDescription": "Campaign landing page for Roadster’s Grand Garage Sale.",
+      "description": "A sale campaign for Roadster on Myntra — landing page, supporting banners and the promotional system that ran across the event.",
+      "challenge": "DRAFT — Sale events compress a lot of information into very little attention. The page had to communicate discount, category and urgency before a shopper decided to scroll.",
+      "approach": "DRAFT — Built the campaign around a garage-sale visual metaphor so the discounting felt like an event with a reason behind it, rather than a generic percentage banner.",
+      "solution": "DRAFT — A landing page with a strong campaign key visual, clear discount tiering, and a banner kit that extended the same language across app, email and social placements.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Campaign Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+41%",
+          "Campaign CTR"
+        ],
+        [
+          "3.2×",
+          "Traffic"
+        ],
+        [
+          "120K",
+          "Reach"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-wide",
+          "r-16-9",
+          "Campaign key visual"
+        ],
+        [
+          "w-half-l",
+          "r-1-1",
+          "Banner kit"
+        ],
+        [
+          "w-half-r",
+          "r-1-1",
+          "App placements"
+        ],
+        [
+          "w-full",
+          "r-21-9",
+          "Landing page"
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "ola-launch-key-visual",
+      "title": "Launch Event Key Visual",
+      "client": "OLA",
+      "year": "2025",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/34c74e221860305.Y3JvcCwxMDA3LDc4OCwxOTcsMA.png",
+      "categories": [
+        "Branding",
+        "Social",
+        "Print"
+      ],
+      "role": [
+        "Art Direction",
+        "Campaign Design",
+        "Visual Design"
+      ],
+      "shortDescription": "Key visual and launch identity for an OLA product launch event.",
+      "description": "The key visual system for an OLA launch event, extended across stage, digital, social, print and retail touchpoints as part of the wider launch campaign.",
+      "challenge": "DRAFT — A launch key visual has to work at the scale of a stage backdrop and the size of a social tile, and stay recognisable across every surface in between.",
+      "approach": "DRAFT — Designed the key visual as a system rather than a single artwork: a core form, a defined colour behaviour and clear rules for how it crops at different ratios.",
+      "solution": "DRAFT — A launch identity that held together across event, OOH, digital and retail, giving campaign, product and retail teams one consistent visual to work from.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Art Direction",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "OLA"
+        ]
+      ],
+      "metrics": [
+        [
+          "+52%",
+          "Recall"
+        ],
+        [
+          "4×",
+          "Surfaces"
+        ],
+        [
+          "200K",
+          "Reach"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-21-9",
+          "Key visual"
+        ],
+        [
+          "w-half-l",
+          "r-4-3",
+          "Event application"
+        ],
+        [
+          "w-half-r",
+          "r-4-3",
+          "Social adaptation"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "Retail and print"
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "brand-identity-guidelines",
+      "title": "Brand Identity Guidelines",
+      "client": "MediBuddy",
+      "year": "2024",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/ac100e221761645.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Branding",
+        "Print"
+      ],
+      "role": [
+        "Brand Identity",
+        "Design Systems",
+        "Art Direction"
+      ],
+      "shortDescription": "A brand guideline system built to scale across business units.",
+      "description": "A redesign of the brand guidelines, establishing a scalable visual identity that multiple business units could apply without diverging from each other.",
+      "challenge": "DRAFT — Several teams were producing work from different interpretations of the same brand, so the output had drifted apart across business units.",
+      "approach": "DRAFT — Wrote the guideline as a working tool rather than a reference document: rules stated as decisions people actually face, with examples of both correct and incorrect use.",
+      "solution": "DRAFT — A guideline covering logo, typography, colour, layout, photography and campaign application, structured so a new team can produce on-brand work without a designer in the room.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Brand Identity",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "MediBuddy"
+        ]
+      ],
+      "metrics": [
+        [
+          "+72%",
+          "Campaign CTR"
+        ],
+        [
+          "6×",
+          "Business units"
+        ],
+        [
+          "40+",
+          "Pages"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-4-3",
+          "Guideline cover"
+        ],
+        [
+          "w-half-l",
+          "r-3-4",
+          "Typography"
+        ],
+        [
+          "w-half-r",
+          "r-3-4",
+          "Colour system"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "Applications"
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "motion-graphics",
+      "title": "Motion Graphics",
+      "client": "Selected work",
+      "year": "2023",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/8d9c87221757075.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Motion",
+        "Social",
+        "Digital"
+      ],
+      "role": [
+        "Motion Design",
+        "Art Direction",
+        "Animation"
+      ],
+      "shortDescription": "A selection of motion and animation work across campaigns.",
+      "description": "Motion graphics and animation produced across campaigns and product launches — explainer sequences, in-app moments and social cutdowns.",
+      "challenge": "DRAFT — Motion is usually the last thing produced and the first thing cut. It had to be fast to produce and consistent with static campaign work already in flight.",
+      "approach": "DRAFT — Built reusable animation principles — timing, easing and transition families — so new pieces could be assembled quickly instead of animated from scratch each time.",
+      "solution": "DRAFT — A motion language that extended the existing static identity into movement, applied across explainer video, in-app campaigns and social formats.",
+      "outcome": "DRAFT — Replace with the real result. Figures below are placeholders.",
+      "credits": [
+        [
+          "Motion Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Art Direction",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Animation",
+          "Vaibhav Bhardwaj"
+        ]
+      ],
+      "metrics": [
+        [
+          "+38%",
+          "Watch time"
+        ],
+        [
+          "2.6×",
+          "Shares"
+        ],
+        [
+          "95K",
+          "Views"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-wide",
+          "r-16-9",
+          "Frames"
+        ],
+        [
+          "w-half-l",
+          "r-1-1",
+          "Social cutdowns"
+        ],
+        [
+          "w-half-r",
+          "r-1-1",
+          "In-app moments"
+        ],
+        [
+          "w-full",
+          "r-21-9",
+          "Motion system"
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "macys-myntra",
+      "title": "Macy’s Brand Store",
+      "client": "Myntra",
+      "year": "2022",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/809935221753013.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "UI/UX",
+        "Digital"
+      ],
+      "role": [
+        "UI Design",
+        "Landing Page Design"
+      ],
+      "shortDescription": "DUMMY — brand store landing page for Macy’s on Myntra.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+22%",
+          "Engagement"
+        ],
+        [
+          "1.6×",
+          "Scroll depth"
+        ],
+        [
+          "44K",
+          "Sessions"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-16-9",
+          "Landing page"
+        ],
+        [
+          "w-half-l",
+          "r-3-4",
+          "Modules"
+        ],
+        [
+          "w-half-r",
+          "r-3-4",
+          "Detail"
+        ],
+        [
+          "w-wide",
+          "r-21-9",
+          "Responsive"
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "lee-myntra",
+      "title": "Lee Brand Store",
+      "client": "Myntra",
+      "year": "2021",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/0c1bdf221581115.Y3JvcCwxNjE2LDEyNjQsMCww.jpg",
+      "categories": [
+        "UI/UX",
+        "Digital"
+      ],
+      "role": [
+        "UI Design",
+        "Visual Design"
+      ],
+      "shortDescription": "DUMMY — brand store landing page for Lee on Myntra.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+19%",
+          "Click-through"
+        ],
+        [
+          "1.4×",
+          "Traffic"
+        ],
+        [
+          "31K",
+          "Sessions"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-16-9",
+          "Landing page"
+        ],
+        [
+          "w-narrow",
+          "r-3-4",
+          "Typography"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "Category zones"
+        ],
+        [
+          "w-full",
+          "r-21-9",
+          "In context"
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "ola-social-posts",
+      "title": "Social Campaign Posts",
+      "client": "OLA",
+      "year": "2025",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/cb6c73143074891.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Social",
+        "Digital"
+      ],
+      "role": [
+        "Social Design",
+        "Art Direction"
+      ],
+      "shortDescription": "DUMMY — a run of social posts across campaign moments.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "OLA"
+        ]
+      ],
+      "metrics": [
+        [
+          "+31%",
+          "Engagement"
+        ],
+        [
+          "2.4×",
+          "Shares"
+        ],
+        [
+          "88K",
+          "Reach"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-wide",
+          "r-1-1",
+          "Grid posts"
+        ],
+        [
+          "w-half-l",
+          "r-1-1",
+          "Stories"
+        ],
+        [
+          "w-half-r",
+          "r-1-1",
+          "Carousels"
+        ],
+        [
+          "w-full",
+          "r-16-9",
+          "Campaign set"
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "print-assets",
+      "title": "Print Assets",
+      "client": "Selected work",
+      "year": "2024",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/34c74e221860305.Y3JvcCwxMDA3LDc4OCwxOTcsMA.png",
+      "categories": [
+        "Print",
+        "Branding"
+      ],
+      "role": [
+        "Print Design",
+        "Production"
+      ],
+      "shortDescription": "DUMMY — brochure, flyer, standee and apparel.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Print",
+          "Vendor"
+        ]
+      ],
+      "metrics": [
+        [
+          "12",
+          "Formats"
+        ],
+        [
+          "4×",
+          "Sizes"
+        ],
+        [
+          "5K",
+          "Printed"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-4-3",
+          "Brochure"
+        ],
+        [
+          "w-half-l",
+          "r-3-4",
+          "Flyer"
+        ],
+        [
+          "w-half-r",
+          "r-3-4",
+          "Standee"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "Apparel"
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "email-newsletter",
+      "title": "Email &amp; Newsletter",
+      "client": "OLA",
+      "year": "2025",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/ac100e221761645.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Digital",
+        "Social"
+      ],
+      "role": [
+        "Email Design",
+        "Visual Design"
+      ],
+      "shortDescription": "DUMMY — a templated email and newsletter system.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Design",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "OLA"
+        ]
+      ],
+      "metrics": [
+        [
+          "+26%",
+          "Open rate"
+        ],
+        [
+          "1.9×",
+          "Click rate"
+        ],
+        [
+          "60K",
+          "Sends"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-wide",
+          "r-16-9",
+          "Template"
+        ],
+        [
+          "w-half-l",
+          "r-3-4",
+          "Modules"
+        ],
+        [
+          "w-half-r",
+          "r-3-4",
+          "Mobile"
+        ],
+        [
+          "w-full",
+          "r-21-9",
+          "Series"
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "roadster-launch-event",
+      "title": "Roadster Launch Event",
+      "client": "Myntra",
+      "year": "2022",
+      "cover": "https://mir-s3-cdn-cf.behance.net/projects/404/8d9c87221757075.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "categories": [
+        "Branding",
+        "Print",
+        "Social"
+      ],
+      "role": [
+        "Art Direction",
+        "Event Design"
+      ],
+      "shortDescription": "DUMMY — identity and assets for a launch event.",
+      "description": "DUMMY CONTENT — replace with the real project description.",
+      "challenge": "DUMMY — replace with the real challenge.",
+      "approach": "DUMMY — replace with the real approach.",
+      "solution": "DUMMY — replace with the real solution.",
+      "outcome": "DUMMY — replace with the real outcome.",
+      "credits": [
+        [
+          "Art Direction",
+          "Vaibhav Bhardwaj"
+        ],
+        [
+          "Client",
+          "Myntra"
+        ]
+      ],
+      "metrics": [
+        [
+          "+44%",
+          "Footfall"
+        ],
+        [
+          "3×",
+          "Surfaces"
+        ],
+        [
+          "15K",
+          "Attendees"
+        ]
+      ],
+      "gallery": [
+        [
+          "w-full",
+          "r-21-9",
+          "Event identity"
+        ],
+        [
+          "w-half-l",
+          "r-4-3",
+          "Signage"
+        ],
+        [
+          "w-half-r",
+          "r-4-3",
+          "Collateral"
+        ],
+        [
+          "w-wide",
+          "r-16-9",
+          "On site"
+        ]
+      ]
+    }
+  ]
+}

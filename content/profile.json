@@ -1,0 +1,95 @@
+{
+  "email": "vaibhav20895@gmail.com",
+  "phone": "+91 82337 03094",
+  "phoneHref": "tel:+918233703094",
+  "linkedin": "https://in.linkedin.com/in/vaibhav-bhardwaj-064359140",
+  "behance": "https://www.behance.net/vbhardwaj",
+  "instagram": "https://www.instagram.com/_bhardwaj_ji_/",
+  "location": "Bengaluru, India",
+  "resumePdf": "Vaibhav-Bhardwaj-Resume.pdf",
+  "experience": [
+    {
+      "period": "Jul 2025 — Present",
+      "role": "Lead Creative Designer",
+      "company": "ConverzAI, Remote",
+      "desc": "Led the end-to-end redesign of the corporate website and built a scalable visual identity system across marketing and product touchpoints."
+    },
+    {
+      "period": "Nov 2024 — Jun 2025",
+      "role": "Design Manager",
+      "company": "OLA, Bengaluru",
+      "desc": "Led creative execution for product launches across digital, social, print, OOH, events and retail, including Bharat Mobility and the Ola S1 launch."
+    },
+    {
+      "period": "May 2023 — Oct 2024",
+      "role": "Senior Designer",
+      "company": "MediBuddy, Bengaluru",
+      "desc": "Led integrated marketing campaigns across digital, CRM, paid and offline, and redesigned the brand guidelines into a scalable identity system."
+    },
+    {
+      "period": "Jun 2021 — Feb 2023",
+      "role": "Senior Graphic Designer",
+      "company": "Myntra, Bengaluru",
+      "desc": "Designed landing pages, promotional experiences and in-app campaigns, and contributed to gamification work that supported retention and engagement."
+    },
+    {
+      "period": "Jul 2020 — Jun 2021",
+      "role": "Graphic Designer & Strategist",
+      "company": "Girnarsoft (CarDekho), Gurgaon",
+      "desc": "Led creative execution for product launches across TV, digital, social and CRM, producing explainer videos, motion graphics and campaign creatives."
+    },
+    {
+      "period": "Mar 2019 — Jul 2020",
+      "role": "Graphic Designer",
+      "company": "Thrillophilia, Jaipur",
+      "desc": "Designed integrated digital marketing campaigns across social, email, paid advertising and Google Ads, plus executive and sales enablement decks."
+    }
+  ],
+  "education": [
+    {
+      "period": "2013 — 2017",
+      "role": "B.Tech, Mechanical Engineering",
+      "company": "Rajasthan Technical University",
+      "desc": "Bachelor of Technology. The route into design was self-taught, alongside and after the degree."
+    },
+    {
+      "period": "Certification",
+      "role": "Foundations of User Experience (UX) Design",
+      "company": "Google",
+      "desc": "Grounding in UX research, information architecture and usability principles."
+    }
+  ],
+  "skills": [
+    "Creative Direction",
+    "Creative Strategy",
+    "End-to-End Design",
+    "UI Design",
+    "Website & Landing Page Design",
+    "Design Systems",
+    "Brand Identity",
+    "Marketing Design",
+    "Campaign Design",
+    "Visual Design",
+    "Motion Graphics",
+    "Typography",
+    "Layout Design",
+    "Social Media & Email Design",
+    "A/B Testing",
+    "CRO",
+    "Cross-Functional Collaboration",
+    "Stakeholder Management"
+  ],
+  "tools": [
+    "Figma",
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Adobe InDesign",
+    "Adobe After Effects",
+    "Adobe Premiere Pro",
+    "Adobe XD",
+    "Midjourney",
+    "Leonardo.Ai",
+    "ChatGPT",
+    "Gemini"
+  ]
+}
