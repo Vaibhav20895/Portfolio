@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Content — Vaibhav Bhardwaj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F6F4;      /* page behind the panels */
+  --card:#FFFFFF;
+  --ink:#111112;
+  --ink-2:#5B5B60;
+  --line:#E4E4E1;
+  --accent:#0F7B8A;     /* readable relative of the site cyan */
+  --accent-soft:#E8F4F6;
+  --lime:#3F7A12;
+  --radius:10px;
+}
+
+/* Type ------------------------------------------------------------------- */
+body, button, input, textarea, select, [class*="css-"]{
+  font-family:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif !important;
+  -webkit-font-smoothing:antialiased;
+}
+html, body{ background:var(--paper) !important; color:var(--ink) !important; }
+
+/* Header: a calm bar, with the site link obvious ------------------------- */
+[class*="AppHeader"]{
+  background:var(--card) !important;
+  border-bottom:1px solid var(--line) !important;
+  box-shadow:0 1px 2px rgba(0,0,0,.03) !important;
+}
+[class*="AppHeader"] *{ color:var(--ink) !important; }
+[class*="AppHeaderSiteLink"], [class*="AppHeader"] a[href^="http"]{
+  background:var(--accent-soft) !important; color:var(--accent) !important;
+  padding:8px 14px !important; border-radius:999px !important;
+  font-weight:600 !important; text-decoration:none !important;
+}
+
+/* Sidebar: the nine routes, easy to scan -------------------------------- */
+[class*="SidebarContainer"]{
+  background:var(--card) !important; border:1px solid var(--line) !important;
+  border-radius:var(--radius) !important; padding:10px !important;
+}
+[class*="SidebarHeading"]{
+  font-size:11px !important; letter-spacing:.12em !important; text-transform:uppercase !important;
+  color:var(--ink-2) !important; padding:10px 12px !important;
+}
+[class*="SidebarNavLink"]{
+  color:var(--ink) !important; border-radius:8px !important;
+  padding:11px 12px !important; margin-bottom:2px !important;
+  font-size:15px !important; border-left:0 !important;
+}
+[class*="SidebarNavLink"]:hover{ background:var(--paper) !important; }
+[class*="SidebarNavLink"][class*="active"]{
+  background:var(--accent) !important; color:#fff !important; font-weight:600 !important;
+}
+[class*="SidebarNavLink"][class*="active"] *{ color:#fff !important; }
+
+/* Cards and the editor pane --------------------------------------------- */
+[class*="CardsGrid"] [class*="Card"], [class*="ControlPaneContainer"],
+[class*="EditorContainer"], [class*="CollectionTop"]{
+  background:var(--card) !important; border:1px solid var(--line) !important;
+  border-radius:var(--radius) !important; color:var(--ink) !important;
+  box-shadow:none !important;
+}
+[class*="CollectionTopHeading"]{ font-weight:700 !important; letter-spacing:-.01em !important; }
+[class*="CollectionTopDescription"]{ color:var(--ink-2) !important; line-height:1.5 !important; }
+
+/* Fields: roomy, with labels that read as labels ------------------------- */
+[class*="FieldLabel"], label{
+  color:var(--ink-2) !important; font-size:12px !important;
+  letter-spacing:.06em !important; text-transform:uppercase !important;
+  font-weight:600 !important;
+}
+[class*="ControlContainer"]{ margin-bottom:20px !important; }
+input, textarea, select,
+[class*="widget"] input, [class*="widget"] textarea{
+  background:var(--card) !important; color:var(--ink) !important;
+  border:1px solid var(--line) !important; border-radius:8px !important;
+  font-size:15px !important; padding:11px 13px !important; line-height:1.45 !important;
+}
+input:hover, textarea:hover{ border-color:#CFCFCA !important; }
+input:focus, textarea:focus, select:focus{
+  outline:none !important; border-color:var(--accent) !important;
+  box-shadow:0 0 0 3px var(--accent-soft) !important;
+}
+[class*="FieldHint"], [class*="hint"]{ color:var(--ink-2) !important; font-size:12.5px !important; text-transform:none !important; letter-spacing:0 !important; }
+
+/* Repeated items (projects, experience) --------------------------------- */
+[class*="ListControl"] [class*="StyledListItem"], [class*="ObjectControl"]{
+  background:var(--paper) !important; border:1px solid var(--line) !important;
+  border-radius:8px !important; padding:6px !important;
+}
+[class*="TopBar"]{ background:transparent !important; }
+
+/* Buttons ---------------------------------------------------------------- */
+button[class*="Primary"], [class*="PublishButton"], [class*="ToolbarButton"]{
+  background:var(--accent) !important; color:#fff !important;
+  border-radius:8px !important; font-weight:600 !important;
+  padding:10px 18px !important; border:0 !important;
+}
+button[class*="Primary"]:hover, [class*="PublishButton"]:hover{ filter:brightness(1.08); }
+[class*="DeleteButton"], button[class*="Danger"]{ color:#B3261E !important; }
+
+/* Login ------------------------------------------------------------------ */
+[class*="LoginPage"]{ background:var(--paper) !important; }
+[class*="LoginPage"] [class*="Card"], [class*="Modal"]{
+  background:var(--card) !important; color:var(--ink) !important;
+  border-radius:var(--radius) !important;
+}
+</style>
+</head>
+<body>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+</body>
+</html>
