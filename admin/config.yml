@@ -1,0 +1,102 @@
+# Which repository the CMS saves into, and how it authenticates.
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    update: 'Update {{collection}} from admin'
+
+# Where uploaded images go, and the path the site should use to read them.
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  # ---------------------------------------------------------------- PROJECTS
+  - name: projects
+    label: Projects
+    files:
+      - name: list
+        label: All projects
+        file: content/projects.json
+        description: >
+          Every project on the Work page. Tick UI/UX to give a project the full
+          case study layout; anything else gets the showcase layout.
+        fields:
+          - name: projects
+            label: Projects
+            label_singular: Project
+            widget: list
+            summary: '{{fields.title}} — {{fields.client}} ({{fields.year}})'
+            fields:
+              - { name: id, label: ID (leave as is), widget: number, value_type: int }
+              - { name: slug, label: "Web address (lowercase, hyphens, no spaces)", widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+              - { name: title, label: Project title, widget: string }
+              - { name: client, label: Client, widget: string }
+              - { name: year, label: Year, widget: string }
+              - { name: cover, label: Cover image, widget: image, required: false, hint: "Shown on the Work page and at the top of the project" }
+              - name: categories
+                label: Categories
+                widget: select
+                multiple: true
+                options: ['Branding', 'Social', 'UI/UX', 'Digital', 'Motion', 'Print']
+                hint: "A project can sit in several. UI/UX gives it a case study."
+              - { name: role, label: Your role, widget: list, hint: "One per line, e.g. Art Direction" }
+              - { name: shortDescription, label: One-line summary, widget: text }
+              - { name: description, label: Description, widget: text }
+              - { name: challenge, label: "Challenge (case studies only)", widget: text, required: false }
+              - { name: approach, label: "Approach (case studies only)", widget: text, required: false }
+              - { name: solution, label: "Solution (case studies only)", widget: text, required: false }
+              - { name: outcome, label: "Outcome (case studies only)", widget: text, required: false }
+              - name: metrics
+                label: Metrics
+                widget: list
+                required: false
+                hint: "Three show on the card. Leave empty to show none."
+                field: { name: pair, label: "Figure and label", widget: list, hint: "First line the figure, second the label" }
+              - name: credits
+                label: Credits
+                widget: list
+                required: false
+                field: { name: pair, label: "Role and name", widget: list }
+              - name: gallery
+                label: Gallery
+                widget: list
+                required: false
+                hint: "Each entry: width class, aspect class, caption"
+                field: { name: item, label: Item, widget: list }
+
+  # ----------------------------------------------------------------- PROFILE
+  - name: profile
+    label: About you
+    files:
+      - name: details
+        label: Contact and background
+        file: content/profile.json
+        fields:
+          - { name: email, label: Email, widget: string }
+          - { name: phone, label: "Phone (as displayed)", widget: string }
+          - { name: phoneHref, label: "Phone (dial format)", widget: string, hint: "e.g. tel:+918233703094" }
+          - { name: linkedin, label: LinkedIn URL, widget: string }
+          - { name: behance, label: Behance URL, widget: string }
+          - { name: instagram, label: Instagram URL, widget: string }
+          - { name: location, label: Location, widget: string }
+          - { name: resumePdf, label: "Resume PDF filename", widget: string }
+          - name: experience
+            label: Experience
+            widget: list
+            summary: '{{fields.role}} — {{fields.company}}'
+            fields:
+              - { name: period, label: Dates, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: company, label: Company, widget: string }
+              - { name: desc, label: Description, widget: text }
+          - name: education
+            label: Education
+            widget: list
+            summary: '{{fields.role}} — {{fields.company}}'
+            fields:
+              - { name: period, label: Dates, widget: string }
+              - { name: role, label: Qualification, widget: string }
+              - { name: company, label: Institution, widget: string }
+              - { name: desc, label: Description, widget: text }
+          - { name: skills, label: Skills, widget: list }
+          - { name: tools, label: Tools, widget: list }
