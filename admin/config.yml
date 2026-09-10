@@ -1,21 +1,26 @@
-# Which repository the CMS saves into, and how it authenticates.
+# Netlify CMS / Decap configuration for vaibhavbdesign.com
 backend:
   name: git-gateway
   branch: main
   commit_messages:
     update: 'Update {{collection}} from admin'
 
-# Where uploaded images go, and the path the site should use to read them.
+# Puts a "view site" link in the header and enables preview links.
+site_url: https://vaibhavbdesign.com
+display_url: vaibhavbdesign.com
+logo_url: https://vaibhavbdesign.com/images/portrait.png
+
 media_folder: "images/uploads"
 public_folder: "images/uploads"
 
 collections:
-  # ---------------------------------------------------------------- PROJECTS
+  # =========================================================== WORK
   - name: projects
-    label: Projects
+    label: "Projects"
+    label_singular: "Project"
     files:
       - name: list
-        label: All projects
+        label: "All projects"
         file: content/projects.json
         description: >
           Every project on the Work page. Tick UI/UX to give a project the full
@@ -25,22 +30,23 @@ collections:
             label: Projects
             label_singular: Project
             widget: list
+            collapsed: true
             summary: '{{fields.title}} — {{fields.client}} ({{fields.year}})'
             fields:
-              - { name: id, label: ID (leave as is), widget: number, value_type: int }
-              - { name: slug, label: "Web address (lowercase, hyphens, no spaces)", widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
-              - { name: title, label: Project title, widget: string }
+              - { name: id, label: "ID (leave as is)", widget: number, value_type: int }
+              - { name: slug, label: "Web address", widget: string, pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+              - { name: title, label: "Project title", widget: string }
               - { name: client, label: Client, widget: string }
               - { name: year, label: Year, widget: string }
-              - { name: cover, label: Cover image, widget: image, required: false, hint: "Shown on the Work page and at the top of the project" }
+              - { name: cover, label: "Cover image", widget: image, required: false }
               - name: categories
                 label: Categories
                 widget: select
                 multiple: true
                 options: ['Branding', 'Social', 'UI/UX', 'Digital', 'Motion', 'Print']
-                hint: "A project can sit in several. UI/UX gives it a case study."
-              - { name: role, label: Your role, widget: list, hint: "One per line, e.g. Art Direction" }
-              - { name: shortDescription, label: One-line summary, widget: text }
+                hint: "UI/UX gives this project a full case study."
+              - { name: role, label: "Your role", widget: list }
+              - { name: shortDescription, label: "One-line summary", widget: text }
               - { name: description, label: Description, widget: text }
               - { name: challenge, label: "Challenge (case studies only)", widget: text, required: false }
               - { name: approach, label: "Approach (case studies only)", widget: text, required: false }
@@ -50,39 +56,39 @@ collections:
                 label: Metrics
                 widget: list
                 required: false
-                hint: "Three show on the card. Leave empty to show none."
-                field: { name: pair, label: "Figure and label", widget: list, hint: "First line the figure, second the label" }
+                field: { name: pair, label: "Figure then label", widget: list }
               - name: credits
                 label: Credits
                 widget: list
                 required: false
-                field: { name: pair, label: "Role and name", widget: list }
+                field: { name: pair, label: "Role then name", widget: list }
               - name: gallery
                 label: Gallery
                 widget: list
                 required: false
-                hint: "Each entry: width class, aspect class, caption"
-                field: { name: item, label: Item, widget: list }
+                field: { name: item, label: "Width, aspect, caption", widget: list }
 
-  # ----------------------------------------------------------------- PROFILE
+  # =========================================================== YOU
   - name: profile
-    label: About you
+    label: "About you"
     files:
       - name: details
-        label: Contact and background
+        label: "Contact and background"
         file: content/profile.json
+        description: "Your details, work history, education, skills and tools."
         fields:
           - { name: email, label: Email, widget: string }
           - { name: phone, label: "Phone (as displayed)", widget: string }
-          - { name: phoneHref, label: "Phone (dial format)", widget: string, hint: "e.g. tel:+918233703094" }
-          - { name: linkedin, label: LinkedIn URL, widget: string }
-          - { name: behance, label: Behance URL, widget: string }
-          - { name: instagram, label: Instagram URL, widget: string }
+          - { name: phoneHref, label: "Phone (dial format)", widget: string }
+          - { name: linkedin, label: "LinkedIn URL", widget: string }
+          - { name: behance, label: "Behance URL", widget: string }
+          - { name: instagram, label: "Instagram URL", widget: string }
           - { name: location, label: Location, widget: string }
           - { name: resumePdf, label: "Resume PDF filename", widget: string }
           - name: experience
             label: Experience
             widget: list
+            collapsed: true
             summary: '{{fields.role}} — {{fields.company}}'
             fields:
               - { name: period, label: Dates, widget: string }
@@ -92,6 +98,7 @@ collections:
           - name: education
             label: Education
             widget: list
+            collapsed: true
             summary: '{{fields.role}} — {{fields.company}}'
             fields:
               - { name: period, label: Dates, widget: string }
@@ -101,112 +108,157 @@ collections:
           - { name: skills, label: Skills, widget: list }
           - { name: tools, label: Tools, widget: list }
 
-  # ------------------------------------------------------------- SITE COPY
-  - name: copy
-    label: Website text
+  # =========================================================== PAGE TEXT
+  - name: text_home
+    label: "Text — Home page"
     files:
-      - name: all
-        label: All wording
-        file: content/copy.json
-        description: >
-          Every heading, label and button on the site. Leave a field blank to
-          fall back to the original wording. Some fields contain HTML entities
-          such as &rsquo; for an apostrophe — keep those as they are.
+      - name: copy
+        label: "Home page wording"
+        file: content/copy/home.json
+        description: "All wording on the home page, top to bottom. Leave a field empty to keep the original wording."
         fields:
-          # Hero
-          - { name: "hero.eyebrow", label: "Hero — eyebrow", widget: string, required: false }
-          - { name: "hero.line1", label: "Hero — first line", widget: string, required: false }
-          - { name: "hero.line2", label: "Hero — second line", widget: string, required: false }
-          - { name: "hero.highlight", label: "Hero — highlighted word", widget: string, required: false }
-          - { name: "hero.cta2", label: "Hero — second button", widget: string, required: false }
-          # Home page
-          - { name: "home.workEyebrow", label: "Home — work eyebrow", widget: string, required: false }
-          - { name: "home.workTitle", label: "Home — work title", widget: string, required: false }
-          - { name: "home.workSub", label: "Home — work intro", widget: string, required: false }
-          - { name: "home.workCta", label: "Home — view all button", widget: string, required: false }
-          - { name: "home.capsEyebrow", label: "Home — capabilities eyebrow", widget: string, required: false }
-          - { name: "home.capsTitle", label: "Home — capabilities title", widget: string, required: false }
-          - { name: "home.capsSub", label: "Home — capabilities intro", widget: string, required: false }
-          - { name: "home.caseEyebrow", label: "Home — case study eyebrow", widget: string, required: false }
-          - { name: "home.caseCta", label: "Home — case study button", widget: string, required: false }
-          - { name: "home.aboutEyebrow", label: "Home — about eyebrow", widget: string, required: false }
-          - { name: "home.aboutTitle", label: "Home — about title", widget: string, required: false }
-          - { name: "home.aboutCta", label: "Home — about button", widget: string, required: false }
-          - { name: "home.expEyebrow", label: "Home — experience eyebrow", widget: string, required: false }
-          - { name: "home.expTitle", label: "Home — experience title", widget: string, required: false }
-          - { name: "home.expCta", label: "Home — experience button", widget: string, required: false }
-          - { name: "home.contactEyebrow", label: "Home — contact eyebrow", widget: string, required: false }
-          # Case study labels
-          - { name: "caseLabels.challenge", label: "Label — Challenge", widget: string, required: false }
-          - { name: "caseLabels.approach", label: "Label — Approach", widget: string, required: false }
-          - { name: "caseLabels.solution", label: "Label — Solution", widget: string, required: false }
-          # Contact
-          - { name: "contact.cta", label: "Contact — talk button", widget: string, required: false }
-          - { name: "contact.callOpt", label: "Contact — popup call option", widget: string, required: false }
-          - { name: "contact.emailOpt", label: "Contact — popup email option", widget: string, required: false }
-          - { name: "contact.hint", label: "Contact — key hint", widget: string, required: false }
-          - { name: "contact.dtEmail", label: "Contact — email label", widget: string, required: false }
-          - { name: "contact.dtCall", label: "Contact — call label", widget: string, required: false }
-          - { name: "contact.dtLinkedin", label: "Contact — LinkedIn label", widget: string, required: false }
-          - { name: "contact.dtLocation", label: "Contact — location label", widget: string, required: false }
-          - { name: "contact.linkedinText", label: "Contact — LinkedIn link text", widget: string, required: false }
-          # Footer
-          - { name: "footer.pages", label: "Footer — pages heading", widget: string, required: false }
-          - { name: "footer.elsewhere", label: "Footer — elsewhere heading", widget: string, required: false }
-          - { name: "footer.copyright", label: "Footer — copyright", widget: string, required: false }
-          - { name: "footer.credit", label: "Footer — credit line", widget: string, required: false }
-          # Work page
-          - { name: "work.eyebrow", label: "Work page — eyebrow", widget: string, required: false }
-          - { name: "work.empty", label: "Work page — empty message", widget: string, required: false }
-          # Project pages
-          - { name: "proj.introLabel", label: "Project — introduction label", widget: string, required: false }
-          - { name: "proj.challengeLabel", label: "Project — challenge label", widget: string, required: false }
-          - { name: "proj.challengeTitle", label: "Project — challenge title", widget: string, required: false }
-          - { name: "proj.approachLabel", label: "Project — approach label", widget: string, required: false }
-          - { name: "proj.approachTitle", label: "Project — approach title", widget: string, required: false }
-          - { name: "proj.designLabel", label: "Project — design label", widget: string, required: false }
-          - { name: "proj.systemLabel", label: "Project — system label", widget: string, required: false }
-          - { name: "proj.systemTitle", label: "Project — system title", widget: string, required: false }
-          - { name: "proj.outcomeLabel", label: "Project — outcome label", widget: string, required: false }
-          - { name: "proj.outcomeTitle", label: "Project — outcome title", widget: string, required: false }
-          - { name: "proj.nextLabel", label: "Project — next label", widget: string, required: false }
-          - { name: "proj.aboutLabel", label: "Showcase — about label", widget: string, required: false }
-          - { name: "proj.workLabel", label: "Showcase — work label", widget: string, required: false }
-          - { name: "proj.workTitle", label: "Showcase — work title", widget: string, required: false }
-          # About page
-          - { name: "about.eyebrow", label: "About — eyebrow", widget: string, required: false }
-          - { name: "about.l1", label: "About — title line 1", widget: string, required: false }
-          - { name: "about.l2", label: "About — title line 2", widget: string, required: false }
-          - { name: "about.l3", label: "About — title line 3", widget: string, required: false }
-          - { name: "about.storyLabel", label: "About — story label", widget: string, required: false }
-          - { name: "about.storyTitle", label: "About — story title", widget: string, required: false }
-          - { name: "about.whoEyebrow", label: "About — who eyebrow", widget: string, required: false }
-          - { name: "about.whoTitle", label: "About — who title", widget: string, required: false }
-          - { name: "about.philEyebrow", label: "About — philosophy eyebrow", widget: string, required: false }
-          - { name: "about.philTitle", label: "About — philosophy title", widget: string, required: false }
-          - { name: "about.pillar1t", label: "About — pillar 1 title", widget: string, required: false }
-          - { name: "about.pillar2t", label: "About — pillar 2 title", widget: string, required: false }
-          - { name: "about.pillar3t", label: "About — pillar 3 title", widget: string, required: false }
-          - { name: "about.expEyebrow", label: "About — experience eyebrow", widget: string, required: false }
-          - { name: "about.expTitle", label: "About — experience title", widget: string, required: false }
-          - { name: "about.personalLabel", label: "About — off the clock label", widget: string, required: false }
-          - { name: "about.personalTitle", label: "About — off the clock title", widget: string, required: false }
-          - { name: "about.ctaTitle", label: "About — closing title", widget: string, required: false }
-          # Resume page
-          - { name: "resume.eyebrow", label: "Resume — eyebrow", widget: string, required: false }
-          - { name: "resume.expTitle", label: "Resume — experience title", widget: string, required: false }
-          - { name: "resume.eduEyebrow", label: "Resume — education eyebrow", widget: string, required: false }
-          - { name: "resume.eduTitle", label: "Resume — education title", widget: string, required: false }
-          - { name: "resume.skillsLabel", label: "Resume — skills label", widget: string, required: false }
-          - { name: "resume.skillsTitle", label: "Resume — skills title", widget: string, required: false }
-          - { name: "resume.toolsLabel", label: "Resume — tools label", widget: string, required: false }
-          - { name: "resume.dlCta", label: "Resume — download button", widget: string, required: false }
-          # Contact form
-          - { name: "cta.brief", label: "Contact — form eyebrow", widget: string, required: false }
-          - { name: "cta.formTitle", label: "Contact — form title", widget: string, required: false }
-          # Contact form fields
-          - { name: "form.name", label: "Form — name label", widget: string, required: false }
-          - { name: "form.email", label: "Form — email label", widget: string, required: false }
-          - { name: "form.type", label: "Form — type label", widget: string, required: false }
-          - { name: "form.message", label: "Form — message label", widget: string, required: false }
-          - { name: "form.send", label: "Form — send button", widget: string, required: false }
+              # Hero
+              - { name: "hero.eyebrow", label: "Eyebrow", widget: string, required: false }
+              - { name: "hero.line1", label: "First line", widget: string, required: false }
+              - { name: "hero.line2", label: "Second line", widget: string, required: false }
+              - { name: "hero.highlight", label: "Highlighted word", widget: string, required: false }
+              - { name: "hero.cta2", label: "Second button", widget: string, required: false }
+              # Sections
+              - { name: "home.workEyebrow", label: "Work eyebrow", widget: string, required: false }
+              - { name: "home.workTitle", label: "Work title", widget: string, required: false }
+              - { name: "home.workSub", label: "Work intro", widget: string, required: false }
+              - { name: "home.workCta", label: "View all button", widget: string, required: false }
+              - { name: "home.capsEyebrow", label: "Capabilities eyebrow", widget: string, required: false }
+              - { name: "home.capsTitle", label: "Capabilities title", widget: string, required: false }
+              - { name: "home.capsSub", label: "Capabilities intro", widget: string, required: false }
+              - { name: "home.caseEyebrow", label: "Case study eyebrow", widget: string, required: false }
+              - { name: "home.caseCta", label: "Case study button", widget: string, required: false }
+              - { name: "home.aboutEyebrow", label: "About eyebrow", widget: string, required: false }
+              - { name: "home.aboutTitle", label: "About title", widget: string, required: false }
+              - { name: "home.aboutCta", label: "About button", widget: string, required: false }
+              - { name: "home.expEyebrow", label: "Experience eyebrow", widget: string, required: false }
+              - { name: "home.expTitle", label: "Experience title", widget: string, required: false }
+              - { name: "home.expCta", label: "Experience button", widget: string, required: false }
+              - { name: "home.contactEyebrow", label: "Contact eyebrow", widget: string, required: false }
+  - name: text_work
+    label: "Text — Work page"
+    files:
+      - name: copy
+        label: "Work page wording"
+        file: content/copy/work.json
+        description: "The archive page heading and its empty-state message. Leave a field empty to keep the original wording."
+        fields:
+              # Work page
+              - { name: "work.eyebrow", label: "Eyebrow", widget: string, required: false }
+              - { name: "work.empty", label: "Empty message", widget: string, required: false }
+  - name: text_project
+    label: "Text — Project pages"
+    files:
+      - name: copy
+        label: "Project pages wording"
+        file: content/copy/project.json
+        description: "Labels used on individual project pages, both layouts. Leave a field empty to keep the original wording."
+        fields:
+              # Case study labels
+              - { name: "caseLabels.challenge", label: "Challenge", widget: string, required: false }
+              - { name: "caseLabels.approach", label: "Approach", widget: string, required: false }
+              - { name: "caseLabels.solution", label: "Solution", widget: string, required: false }
+              # Project pages
+              - { name: "proj.introLabel", label: "Introduction label", widget: string, required: false }
+              - { name: "proj.challengeLabel", label: "Challenge label", widget: string, required: false }
+              - { name: "proj.challengeTitle", label: "Challenge title", widget: string, required: false }
+              - { name: "proj.approachLabel", label: "Approach label", widget: string, required: false }
+              - { name: "proj.approachTitle", label: "Approach title", widget: string, required: false }
+              - { name: "proj.designLabel", label: "Design label", widget: string, required: false }
+              - { name: "proj.systemLabel", label: "System label", widget: string, required: false }
+              - { name: "proj.systemTitle", label: "System title", widget: string, required: false }
+              - { name: "proj.outcomeLabel", label: "Outcome label", widget: string, required: false }
+              - { name: "proj.outcomeTitle", label: "Outcome title", widget: string, required: false }
+              - { name: "proj.nextLabel", label: "Next label", widget: string, required: false }
+              - { name: "proj.aboutLabel", label: "About label", widget: string, required: false }
+              - { name: "proj.workLabel", label: "Work label", widget: string, required: false }
+              - { name: "proj.workTitle", label: "Work title", widget: string, required: false }
+  - name: text_about
+    label: "Text — About page"
+    files:
+      - name: copy
+        label: "About page wording"
+        file: content/copy/about.json
+        description: "Headings and labels on Who am i. Leave a field empty to keep the original wording."
+        fields:
+              # About page
+              - { name: "about.eyebrow", label: "Eyebrow", widget: string, required: false }
+              - { name: "about.l1", label: "Title line 1", widget: string, required: false }
+              - { name: "about.l2", label: "Title line 2", widget: string, required: false }
+              - { name: "about.l3", label: "Title line 3", widget: string, required: false }
+              - { name: "about.storyLabel", label: "Story label", widget: string, required: false }
+              - { name: "about.storyTitle", label: "Story title", widget: string, required: false }
+              - { name: "about.whoEyebrow", label: "Who eyebrow", widget: string, required: false }
+              - { name: "about.whoTitle", label: "Who title", widget: string, required: false }
+              - { name: "about.philEyebrow", label: "Philosophy eyebrow", widget: string, required: false }
+              - { name: "about.philTitle", label: "Philosophy title", widget: string, required: false }
+              - { name: "about.pillar1t", label: "Pillar 1 title", widget: string, required: false }
+              - { name: "about.pillar2t", label: "Pillar 2 title", widget: string, required: false }
+              - { name: "about.pillar3t", label: "Pillar 3 title", widget: string, required: false }
+              - { name: "about.expEyebrow", label: "Experience eyebrow", widget: string, required: false }
+              - { name: "about.expTitle", label: "Experience title", widget: string, required: false }
+              - { name: "about.personalLabel", label: "Off the clock label", widget: string, required: false }
+              - { name: "about.personalTitle", label: "Off the clock title", widget: string, required: false }
+              - { name: "about.ctaTitle", label: "Closing title", widget: string, required: false }
+  - name: text_resume
+    label: "Text — Resume page"
+    files:
+      - name: copy
+        label: "Resume page wording"
+        file: content/copy/resume.json
+        description: "Headings on the resume page. Leave a field empty to keep the original wording."
+        fields:
+              # Resume page
+              - { name: "resume.eyebrow", label: "Eyebrow", widget: string, required: false }
+              - { name: "resume.expTitle", label: "Experience title", widget: string, required: false }
+              - { name: "resume.eduEyebrow", label: "Education eyebrow", widget: string, required: false }
+              - { name: "resume.eduTitle", label: "Education title", widget: string, required: false }
+              - { name: "resume.skillsLabel", label: "Skills label", widget: string, required: false }
+              - { name: "resume.skillsTitle", label: "Skills title", widget: string, required: false }
+              - { name: "resume.toolsLabel", label: "Tools label", widget: string, required: false }
+              - { name: "resume.dlCta", label: "Download button", widget: string, required: false }
+  - name: text_contact
+    label: "Text — Contact page"
+    files:
+      - name: copy
+        label: "Contact page wording"
+        file: content/copy/contact.json
+        description: "Contact details, the enquiry form and the key labels. Leave a field empty to keep the original wording."
+        fields:
+              # Contact details
+              - { name: "contact.cta", label: "Talk button", widget: string, required: false }
+              - { name: "contact.callOpt", label: "Popup call option", widget: string, required: false }
+              - { name: "contact.emailOpt", label: "Popup email option", widget: string, required: false }
+              - { name: "contact.hint", label: "Key hint", widget: string, required: false }
+              - { name: "contact.dtEmail", label: "Email label", widget: string, required: false }
+              - { name: "contact.dtCall", label: "Call label", widget: string, required: false }
+              - { name: "contact.dtLinkedin", label: "LinkedIn label", widget: string, required: false }
+              - { name: "contact.dtLocation", label: "Location label", widget: string, required: false }
+              - { name: "contact.linkedinText", label: "LinkedIn link text", widget: string, required: false }
+              # Enquiry form
+              - { name: "cta.brief", label: "Form eyebrow", widget: string, required: false }
+              - { name: "cta.formTitle", label: "Form title", widget: string, required: false }
+              # Form fields
+              - { name: "form.name", label: "Name label", widget: string, required: false }
+              - { name: "form.email", label: "Email label", widget: string, required: false }
+              - { name: "form.type", label: "Type label", widget: string, required: false }
+              - { name: "form.message", label: "Message label", widget: string, required: false }
+              - { name: "form.send", label: "Send button", widget: string, required: false }
+  - name: text_footer
+    label: "Text — Footer"
+    files:
+      - name: copy
+        label: "Footer wording"
+        file: content/copy/footer.json
+        description: "Footer headings and the small print. Leave a field empty to keep the original wording."
+        fields:
+              # Footer
+              - { name: "footer.pages", label: "Pages heading", widget: string, required: false }
+              - { name: "footer.elsewhere", label: "Elsewhere heading", widget: string, required: false }
+              - { name: "footer.copyright", label: "Copyright", widget: string, required: false }
+              - { name: "footer.credit", label: "Credit line", widget: string, required: false }
