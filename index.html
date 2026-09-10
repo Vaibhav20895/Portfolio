@@ -862,6 +862,21 @@ body.has-reticle .keys.on .key{cursor:none}
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Netlify Identity: catches the token in an invite or password-reset link
+     and hands the visitor over to /admin/. Does nothing for normal visitors. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.on('login', function () {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
+
 <div class="canvas-grid" aria-hidden="true"></div>
 <canvas class="artwork" id="artwork" role="img"
   aria-label="Generative particle artwork in white and grey that changes form as the page scrolls"></canvas>
