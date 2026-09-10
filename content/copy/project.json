@@ -1,0 +1,19 @@
+{
+  "caseLabels.challenge": "Challenge",
+  "caseLabels.approach": "Approach",
+  "caseLabels.solution": "Solution",
+  "proj.introLabel": "Introduction",
+  "proj.challengeLabel": "The challenge",
+  "proj.challengeTitle": "What had to be solved.",
+  "proj.approachLabel": "The approach",
+  "proj.approachTitle": "How it was reframed.",
+  "proj.designLabel": "The design",
+  "proj.systemLabel": "Design system",
+  "proj.systemTitle": "The thinking behind it.",
+  "proj.outcomeLabel": "Outcome",
+  "proj.outcomeTitle": "Result.",
+  "proj.nextLabel": "Next project",
+  "proj.aboutLabel": "About the work",
+  "proj.workLabel": "The work",
+  "proj.workTitle": "Selected pieces."
+}

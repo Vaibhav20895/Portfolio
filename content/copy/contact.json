@@ -1,0 +1,18 @@
+{
+  "contact.cta": "Let&rsquo;s talk ",
+  "contact.callOpt": "Call me",
+  "contact.emailOpt": "Email me",
+  "contact.hint": "Press a key",
+  "contact.dtEmail": "Email",
+  "contact.dtCall": "Call",
+  "contact.dtLinkedin": "LinkedIn",
+  "contact.dtLocation": "Location",
+  "contact.linkedinText": "LINKEDIN PROFILE",
+  "cta.brief": "Brief me",
+  "cta.formTitle": "Tell me what you&rsquo;re making.",
+  "form.name": "Name",
+  "form.email": "Email",
+  "form.type": "Project type",
+  "form.message": "Message",
+  "form.send": "Send "
+}
