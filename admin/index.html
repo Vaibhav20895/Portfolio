@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Content — Vaibhav Bhardwaj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+  /* Bring the editor closer to the site: same typeface, same dark surface,
+     same accent. Decap's own class names are generated, so this targets
+     structure and inherited properties rather than internal selectors. */
+  :root{
+    --ink:#050505; --panel:#0F0F10; --line:rgba(255,255,255,.10);
+    --txt:#FFFFFF; --txt-2:rgba(255,255,255,.72);
+    --accent:#9BE15D; --accent-2:#00B4D8;
+  }
+  html, body, #nc-root{ background:var(--ink); color:var(--txt); }
+  body, button, input, textarea, select, [class*="css-"]{
+    font-family:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif !important;
+  }
+  /* Top bar */
+  [class*="AppHeader"]{ background:var(--panel) !important; border-bottom:1px solid var(--line) !important; }
+  [class*="AppHeader"] a, [class*="AppHeader"] button{ color:var(--txt) !important; }
+  /* Sidebar and cards */
+  [class*="SidebarContainer"], [class*="CardsGrid"] [class*="Card"],
+  [class*="ControlPaneContainer"], [class*="EditorContainer"]{
+    background:var(--panel) !important; border-color:var(--line) !important; color:var(--txt) !important;
+  }
+  [class*="SidebarNavLink"]{ color:var(--txt-2) !important; border-radius:8px; }
+  [class*="SidebarNavLink"][class*="active"], [class*="SidebarNavLink"]:hover{
+    color:var(--ink) !important; background:var(--accent) !important;
+  }
+  /* Inputs */
+  input, textarea, select,
+  [class*="ObjectControl"], [class*="ListControl"], [class*="widget"] input, [class*="widget"] textarea{
+    background:#141416 !important; color:var(--txt) !important;
+    border:1px solid var(--line) !important; border-radius:8px !important;
+  }
+  input:focus, textarea:focus, select:focus{ outline:2px solid var(--accent-2) !important; }
+  label, [class*="FieldLabel"]{ color:var(--txt-2) !important; letter-spacing:.02em; }
+  /* Primary actions */
+  [class*="ToolbarButton"], button[class*="Primary"], [class*="PublishButton"]{
+    background:var(--accent) !important; color:var(--ink) !important;
+    border-radius:8px !important; font-weight:600 !important;
+  }
+  /* Login screen */
+  [class*="LoginPage"], [class*="Modal"]{ background:var(--panel) !important; color:var(--txt) !important; }
+</style>
+</head>
+<body>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+</body>
+</html>
