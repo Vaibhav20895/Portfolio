@@ -37,7 +37,7 @@
   --color-surface-hover:rgba(255,255,255,.03);
 
   /* Selection-box palette — the bounding box is not always cyan. */
-  --sel-cyan:#9BE15D; --sel-abmer:#8077e0;   /* default selection is lime now */
+  --sel-cyan:#9BE15D; --sel-purple:#8077e0;   /* default selection is lime now */
   --color-cursor:#9BE15D;                    /* cursor stays lime regardless */
   --sel-violet:#9A8CFF; --sel-lime:#00B4D8;
 
@@ -1776,7 +1776,7 @@ VIEWS.about = function(){
 VIEWS.resume = function(){
   return '<section class="section" id="r-intro" data-shape='+PARTICLE_OBJECTS.resumePage+' aria-labelledby="r-title">'
   + '<div class="sr"><p class="eyebrow"><span class="rule" aria-hidden="true"></span>'+T('resume.eyebrow')+'</p>'
-  + '<h1 class="about__title px" data-px="0.04" id="r-title">'+sel('Resume.','white')+'</h1>'
+  + '<h1 class="about__title px" data-px="0.04" id="r-title">'+sel('Resume.','purple')+'</h1>'
   + '<p class="section__sub">The functional version. Experience, education, skills and tools — '
   + 'and a PDF when you need one to forward.</p>'
   + '<p class="about__cta"><a class="cta cta--primary" id="dl-top" href="'+RESUME_PDF+'" '
